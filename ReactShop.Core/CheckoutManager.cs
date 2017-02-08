@@ -178,15 +178,7 @@ namespace ReactShop.Core
 
                 var products = new string[] 
                 { 
-                    "10 Million Member CodeProject T-Shirt|3399",
-                    "Women's T-Shirt|3399",
-                    "CodeProject.com Body Suit|1399",
-                    "CodeProject Mug Mugs|1099",
-                    "RootAdmin Mug|1099",
-                    "Drinking Glass|1099",
-                    "Stein|1399",
-                    "Mousepad|1099",
-                    "Square Sticker|299",
+                    "test|1"
                 };
 
                 var index = 1;
@@ -199,8 +191,8 @@ namespace ReactShop.Core
                     db.Product.Add(new Product
                     {
                         SKU = Guid.NewGuid().ToString(),
-                        SmallImagePath = string.Format("Images/Products/small_{0}.jpg", index),
-                        LargeImagePath = string.Format("Images/Products/large_{0}.jpg", index),
+                        SmallImagePath = string.Format("Images/Products/small_test.jpg"),
+                        LargeImagePath = string.Format("Images/Products/large_test.jpg"),
                         Description = description,
                         Price = price
                     });
