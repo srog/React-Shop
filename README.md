@@ -2,6 +2,6 @@
 Testing e-c opportunities..
 
 #TO DO LIST:
-Database Project
-Product images / descriptions
-Styling
+*Database Project
+*Product images / descriptions
+*Styling
