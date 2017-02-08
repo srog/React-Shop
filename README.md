@@ -9,3 +9,7 @@ Testing e-c opportunities..
 * Search functionality
 * List Items / Categories
 * Admin UI
+* View Cart
+* Cart - Change quantities / remove
+* Home page link
+* Header info - user / cart / links
