@@ -6,6 +6,6 @@ Testing e-c opportunities..
 * Database Project
 * Product images / descriptions
 * Styling
-* Search
+* Search functionality
 * List Items / Categories
-
+* Admin UI
