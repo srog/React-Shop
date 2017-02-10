@@ -232,6 +232,7 @@
     <Content Include="Global.asax" />
     <Content Include="favicon.ico" />
     <Content Include="Images\codeproject.png" />
+    <Content Include="Images\mmc_logo.png" />
     <Content Include="Images\product.png" />
     <Content Include="Images\Products\large_1.jpg" />
     <Content Include="Images\Products\large_2.jpg" />
