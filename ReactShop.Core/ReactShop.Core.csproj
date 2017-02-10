@@ -62,6 +62,7 @@
     <Compile Include="Context.cs" />
     <Compile Include="DiscountManager.cs" />
     <Compile Include="DTOs\CartDTO.cs" />
+    <Compile Include="DTOs\OrderDTO.cs" />
     <Compile Include="DTOs\ProductDTO.cs" />
     <Compile Include="DTOs\CartItemDTO.cs" />
     <Compile Include="DTOs\CustomerDTO.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="DTOs\DiscountRuleDTO.cs" />
     <Compile Include="DTOs\NewProductDTO.cs" />
     <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\CartItem.cs" />
     <Compile Include="ICheckoutManager.cs" />
