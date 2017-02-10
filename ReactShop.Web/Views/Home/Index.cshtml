@@ -10,6 +10,7 @@
 
 @Html.ReactInitJavaScript()
 
+
 <div class="container">
     <div class="row">
         <div class="row">
@@ -85,34 +86,36 @@
     </div>
 </div>
 
+@section Scripts
+{
+    <script type="text/javascript">
+        $("#detailsbutton")
+            .click(function() {
+
+                $("#AddUserForm")
+                    .dialog({
+                        autoOpen: true,
+                        position: { my: "center", at: "top+350", of: window },
+                        width: 1000,
+                        resizable: false,
+                        title: 'Details Form',
+                        modal: true,
+                        open: function() {
+                            $(this)
+                                .load('@Url.Action("Details", "Home", new {sku = "60e1f8ac-2350-484b-8871-0ea722184b92"})');
+                        },
+                        buttons: {
+                            Cancel: function() {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                return false;
+            });
+    </script>
 
 
-<script>
-    $("#detailsbutton").click(function () {
-
-        $("#AddUserForm").dialog({
-            autoOpen: true,
-            position: { my: "center", at: "top+350", of: window },
-            width: 1000,
-            resizable: false,
-            title: 'Details Form',
-            modal: true,
-            open: function () {
-                $(this).load('@Url.Action("Details", "Home", new { sku = "60e1f8ac-2350-484b-8871-0ea722184b92" } )');
-            },
-            buttons: {
-
-                Cancel: function () {
-                    $(this).dialog("close");
-                }
-            }
-        });
-        return false;
-    });
-</script>
-
-
-
+}
 
 
 

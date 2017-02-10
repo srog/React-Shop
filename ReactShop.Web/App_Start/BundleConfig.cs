@@ -9,7 +9,7 @@ namespace ReactShop.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new BabelBundle("~/bundles/js").Include(
-                "~/Scripts/jquery-3.1.0.min.js",
+                "~/Scripts/jquery-3.1.0.js",
                 "~/Scripts/jquery-ui-1.12.1.min.js",
                 "~/Scripts/jquery-validate.min.js",
                 "~/Scripts/jquery.unobtrusive-ajax.min.js",
@@ -23,10 +23,10 @@ namespace ReactShop.Web
                 "~/Scripts/showdown.js"
             ));
 
-            // Forces files to be combined and minified in debug mode
-            // Only used here to demonstrate how combination/minification works
-            // Normally you would use unminified versions in debug mode.
-            BundleTable.EnableOptimizations = true;
+              // Forces files to be combined and minified in debug mode
+              // Only used here to demonstrate how combination/minification works
+              // Normally you would use unminified versions in debug mode.
+              BundleTable.EnableOptimizations = true;
         }
     }
 }

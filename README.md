@@ -6,6 +6,10 @@ Testing e-c opportunities..
 * Database Project
 * Product images / descriptions
 * Styling
-* Search
+* Search functionality
 * List Items / Categories
-
+* Admin UI
+* View Cart
+* Cart - Change quantities / remove
+* Home page link
+* Header info - user / cart / links
