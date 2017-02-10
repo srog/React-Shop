@@ -1,5 +1,6 @@
 ﻿using ReactShop.Core;
 using System.Web.Mvc;
+using ReactShop.Core.Entities;
 
 namespace ReactShop.Web.Controllers
 {
@@ -42,6 +43,14 @@ namespace ReactShop.Web.Controllers
                  Quantity = 1
             });
             return RedirectToAction("Cart", "Home");
+        }
+
+     
+        public PartialViewResult Details(string sku)
+        {
+            var productDetail = checkoutManager.GetProduct(sku);
+            return PartialView("_Details", productDetail);
+
         }
     }
 }

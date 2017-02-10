@@ -9,7 +9,10 @@ namespace ReactShop.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new BabelBundle("~/bundles/js").Include(
-                "~/Scripts/jquery-1.10.2.min.js",
+                "~/Scripts/jquery-3.1.0.min.js",
+                "~/Scripts/jquery-ui-1.12.1.min.js",
+                "~/Scripts/jquery-validate.min.js",
+                "~/Scripts/jquery.unobtrusive-ajax.min.js",
                 "~/Scripts/react/react.min.js",
                 "~/Scripts/react/react-dom.min.js",
                 "~/Scripts/react/react-with-addons.min.js",
