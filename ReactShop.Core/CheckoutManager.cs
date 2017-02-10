@@ -27,6 +27,12 @@ namespace ReactShop.Core
             return product;
         }
 
+        public CustomerDTO GetCustomer(int id)
+        {
+            var customer = GetCustomers().FirstOrDefault(c => c.Id == id);
+            return customer;
+        }
+
         public CheckoutSummaryDTO GetCheckoutSummary()
         {
             var cartItems = GetCartItems();
@@ -40,7 +46,7 @@ namespace ReactShop.Core
                 OrderNumber = "123456789",
                 DeliveryUpToNWorkingDays = 4,
                 Total = total,
-                CustomerInfo = GetDummyCustomerInfo(),
+                CustomerInfo = GetCustomer(1),
                 CartItems = cartItems
             };
         }
@@ -63,7 +69,8 @@ namespace ReactShop.Core
                 DiscountRate = discountRule.Rate * 100M,
                 DiscountValue = discountValue,
                 Total = total,
-                CartItems = cartItems
+                CartItems = cartItems,
+                CustomerId = 1
             };
         }
 
@@ -125,6 +132,26 @@ namespace ReactShop.Core
             }
         }
 
+        public List<CustomerDTO> GetCustomers()
+        {
+            using (var db = new Context())
+            {
+                return db.Customer
+                    .Select(i =>
+                    new CustomerDTO
+                    {
+                        Id = i.Id,
+                        Title = i.Title,
+                        ForeName = i.ForeName,
+                        Surname = i.Surname,
+                        Address1 = i.Address1,
+                        Address2 = i.Address2,
+                        Address3 = i.Address3,
+                        Postcode = i.Postcode
+                    }).ToList();
+            }
+        }
+
         public List<ProductDTO> GetProducts()
         {
             using (var db = new Context())
@@ -163,17 +190,6 @@ namespace ReactShop.Core
             }
         }
 
-        private CustomerInfoDTO GetDummyCustomerInfo()
-        {
-            return new CustomerInfoDTO
-            {
-                CustomerName = "John Doe",
-                PhoneNumber = "(11) 555-12345",
-                Email = "johndoe@email.com",
-                DeliveryAddress = "503-250 Ferrand Drive - Toronto Ontario, M3C 3G8 Canada"
-            };
-        }
-
         public Context InitializeDB()
         {
             var db = new Context();
@@ -201,25 +217,39 @@ namespace ReactShop.Core
                     var description = p.Split('|')[0];
                     var price = decimal.Parse(p.Split('|')[1]) / 100M;
 
-                    var product = 
-                    db.Product.Add(new Product
-                    {
-                        SKU = Guid.NewGuid().ToString(),
-                        SmallImagePath = string.Format("Images/Products/small_{0}.jpg", index),
-                        LargeImagePath = string.Format("Images/Products/large_{0}.jpg", index),
-                        Description = description,
-                        Price = price
-                    });
+                    var product =
+                        db.Product.Add(new Product
+                        {
+                            SKU = Guid.NewGuid().ToString(),
+                            SmallImagePath = string.Format("Images/Products/small_{0}.jpg", index),
+                            LargeImagePath = string.Format("Images/Products/large_{0}.jpg", index),
+                            Description = description,
+                            Price = price
+                        });
 
                     var cartItem =
-                    db.CartItem.Add(new CartItem
-                    {
-                        Product = product,
-                        Quantity = 1
-                    });
+                        db.CartItem.Add(new CartItem
+                        {
+                            Product = product,
+                            Quantity = 1
+                        });
 
                     index++;
                 }
+
+                db.Customer.Add(new Customer
+                {
+                    Id = 1,
+                    Title = "Mr",
+                    ForeName = "John",
+                    Surname = "Doe",
+                    Telephone = "(11) 555-12345",
+                    Email = "johndoe@email.com",
+                    Address1 = "503-250 Ferrand Drive",
+                    Address2 = "Toronto Ontario",
+                    Address3 = "Canada",
+                    Postcode = "M3C 3G8"
+                });
 
                 db.SaveChanges();
 

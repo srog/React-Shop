@@ -19,7 +19,7 @@ namespace ReactShop.Core.DTOs
             }
         }
 
-        public CustomerInfoDTO CustomerInfo { get; set; }
+        public CustomerDTO CustomerInfo { get; set; }
         public List<CartItemDTO> CartItems { get; set; }
     }
 }
