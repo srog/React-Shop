@@ -20,8 +20,8 @@ namespace ReactShop.Web
 
             string serverFilePath = Server.MapPath("~/cart.json");
             AutoFacHelper.Initialize(serverFilePath);
-            var checkoutManager = AutoFacHelper.Resolve<ICheckoutManager>();
-            checkoutManager.InitializeDB();
+            var initDB = AutoFacHelper.Resolve<IInitializeDB>();
+            initDB.Init();
         }
     }
 }

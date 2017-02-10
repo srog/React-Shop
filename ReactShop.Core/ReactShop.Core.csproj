@@ -60,6 +60,18 @@
     <Compile Include="AutoFacHelper.cs" />
     <Compile Include="CheckoutManager.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="Data\Cart\GetCart.cs" />
+    <Compile Include="Data\Cart\IGetCart.cs" />
+    <Compile Include="Data\Cart\ISaveCart.cs" />
+    <Compile Include="Data\Cart\SaveCart.cs" />
+    <Compile Include="Data\Customers\GetCustomer.cs" />
+    <Compile Include="Data\Customers\IGetCustomer.cs" />
+    <Compile Include="Data\Orders\CreateOrder.cs" />
+    <Compile Include="Data\Orders\GetOrders.cs" />
+    <Compile Include="Data\Orders\ICreateOrder.cs" />
+    <Compile Include="Data\Orders\IGetOrders.cs" />
+    <Compile Include="Data\Products\GetProducts.cs" />
+    <Compile Include="Data\Products\IGetProducts.cs" />
     <Compile Include="DiscountManager.cs" />
     <Compile Include="DTOs\CartDTO.cs" />
     <Compile Include="DTOs\OrderDTO.cs" />
@@ -75,6 +87,8 @@
     <Compile Include="Entities\CartItem.cs" />
     <Compile Include="ICheckoutManager.cs" />
     <Compile Include="IDiscountManager.cs" />
+    <Compile Include="IInitializeDB.cs" />
+    <Compile Include="InitializeDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

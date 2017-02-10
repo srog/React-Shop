@@ -1,55 +1,66 @@
 ﻿using ReactShop.Core;
 using System.Web.Mvc;
-using ReactShop.Core.Entities;
+using ReactShop.Core.Data.Cart;
+using ReactShop.Core.Data.Orders;
+using ReactShop.Core.Data.Products;
 
 namespace ReactShop.Web.Controllers
 {
     public class HomeController : Controller
     {
-        readonly ICheckoutManager checkoutManager;
+        private readonly IGetProducts _getProducts;
+        private readonly IGetCart _getCart;
+        private readonly ICreateOrder _createOrder;
+        private readonly ICheckoutManager _checkoutManager;
 
         public HomeController()
         {
-            this.checkoutManager = AutoFacHelper.Resolve<ICheckoutManager>();
+            _getProducts = AutoFacHelper.Resolve<IGetProducts>();
+            _getCart = AutoFacHelper.Resolve<IGetCart>();
+            _createOrder = AutoFacHelper.Resolve<ICreateOrder>();
+            _checkoutManager = AutoFacHelper.Resolve<ICheckoutManager>();
         }
-
-        public HomeController(ICheckoutManager checkoutManager)
+        public HomeController(ICheckoutManager checkoutManager, 
+            ICreateOrder createOrder,
+            IGetProducts getProducts,
+            IGetCart getCart)
         {
-            this.checkoutManager = checkoutManager;
+            
         }
+        
 
         public ActionResult Index()
         {
-            return View(checkoutManager.GetProducts());
+            return View(_getProducts.Get());
         }
 
         public ActionResult Cart()
         {
-            return View(checkoutManager.GetCart());
+            return View(_getCart.Get(null));
         }
 
         public ActionResult CheckoutSuccess()
         {
-            checkoutManager.CreateOrder(checkoutManager.GetCart());
-            return View(checkoutManager.GetCheckoutSummary());
+            _createOrder.Create(_getCart.Get(null));
+            return View(_checkoutManager.GetCheckoutSummary());
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
         public ActionResult AddToCart(string SKU)
         {
-            checkoutManager.SaveCart(new Core.DTOs.CartItemDTO
-            {
-                 SKU = SKU,
-                 Quantity = 1
-            });
+            //_saveCart.Save(new Core.DTOs.CartItemDTO
+            //{
+            //     SKU = SKU,
+            //     Quantity = 1
+            //});
             return RedirectToAction("Cart", "Home");
         }
 
      
         public PartialViewResult Details(string sku)
         {
-            var productDetail = checkoutManager.GetProduct(sku);
+            var productDetail = _getProducts.GetBySku(sku);
             return PartialView("_Details", productDetail);
 
         }

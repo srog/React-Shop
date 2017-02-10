@@ -3,21 +3,20 @@ using ReactShop.Core.DTOs;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Mvc;
+using ReactShop.Core.Data.Cart;
 
 namespace ReactShop.Web.WebApi
 {
     public class CartController : ApiController
     {
-        readonly ICheckoutManager checkoutManager;
+        private readonly ICheckoutManager _checkoutManager;
+        private readonly IGetCart _getCart;
 
         public CartController()
         {
-            this.checkoutManager = AutoFacHelper.Resolve<ICheckoutManager>();
-        }
+            _checkoutManager = AutoFacHelper.Resolve<ICheckoutManager>();
+            _getCart = AutoFacHelper.Resolve<IGetCart>();
 
-        public CartController(ICheckoutManager checkoutManager)
-        {
-            this.checkoutManager = checkoutManager;
         }
 
         // POST: api/Cart
@@ -25,14 +24,14 @@ namespace ReactShop.Web.WebApi
         [ValidateHttpAntiForgeryToken]
         public CartDTO Post([FromBody]CartItemDTO value)
         {
-            var cart = checkoutManager.GetCart();
+            var cart = _getCart.Get();
             var cartItem = cart.CartItems.SingleOrDefault(i => i.SKU == value.SKU);
             if (cartItem != null)
              {
                 cartItem.Quantity = value.Quantity;
-                var recalculatedCart = checkoutManager.GetCart(cart.CartItems);
+                var recalculatedCart = _getCart.Get(cart.CartItems);
 
-                checkoutManager.SaveCart(cartItem);
+                _checkoutManager.SaveCart(cartItem);
                 return recalculatedCart;
             }
             else

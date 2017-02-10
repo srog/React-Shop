@@ -1,4 +1,8 @@
 ﻿using Autofac;
+using ReactShop.Core.Data.Cart;
+using ReactShop.Core.Data.Customers;
+using ReactShop.Core.Data.Orders;
+using ReactShop.Core.Data.Products;
 
 namespace ReactShop.Core
 {
@@ -13,6 +17,15 @@ namespace ReactShop.Core
             builder.RegisterType<CheckoutManager>()
                 .As<ICheckoutManager>()
                 .WithParameter("serverFilePath", serverFilePath);
+
+            builder.RegisterType<GetProducts>().As<IGetProducts>();
+            builder.RegisterType<GetCart>().As<IGetCart>();
+            builder.RegisterType<CreateOrder>().As<ICreateOrder>();
+            builder.RegisterType<GetOrders>().As<IGetOrders>();
+            builder.RegisterType<SaveCart>().As<ISaveCart>();
+            builder.RegisterType<GetCustomer>().As<IGetCustomer>();
+            builder.RegisterType<InitializeDB>().As<IInitializeDB>();
+
             container = builder.Build();
         }
 
