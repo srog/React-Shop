@@ -21,6 +21,12 @@ namespace ReactShop.Core
             this.serverFilePath = serverFilePath;
         }
 
+        public ProductDTO GetProduct(string SKU)
+        {
+            var product = GetProducts().First();
+            return product;
+        }
+
         public CheckoutSummaryDTO GetCheckoutSummary()
         {
             var cartItems = GetCartItems();

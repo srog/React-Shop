@@ -10,6 +10,8 @@ namespace ReactShop.Core
         CartDTO GetCart(List<CartItemDTO> cartItems);
         CheckoutSummaryDTO GetCheckoutSummary();
         List<ProductDTO> GetProducts();
+        ProductDTO GetProduct(string sku);
+
         Context InitializeDB();
     }
 }
