@@ -13,5 +13,7 @@ namespace ReactShop.Core
         ProductDTO GetProduct(string sku);
 
         Context InitializeDB();
+        int CreateOrder(CartDTO cart);
+
     }
 }

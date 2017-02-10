@@ -256,5 +256,27 @@ namespace ReactShop.Core
             }
             return db;
         }
+
+        public int CreateOrder(CartDTO cart)
+        {
+            var result = 0;
+            using (var db = new Context())
+            {
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    db.Order.Add(new Order
+                    {
+                        CustomerId = cart.CustomerId,
+                        DatePlaced = DateTime.Now,
+                        Products = cart.CartItems.Select(ci => ci.Id),
+                        TotalPrice = cart.Total
+                    });
+
+                    result = db.SaveChanges();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
     }
 }

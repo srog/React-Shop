@@ -30,6 +30,7 @@ namespace ReactShop.Web.Controllers
 
         public ActionResult CheckoutSuccess()
         {
+            checkoutManager.CreateOrder(checkoutManager.GetCart());
             return View(checkoutManager.GetCheckoutSummary());
         }
 
