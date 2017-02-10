@@ -15,29 +15,31 @@ namespace ReactShop.Core
 
                 var products = new string[]
                 {
-                    "10 Million Member CodeProject T-Shirt|3399",
-                    "Women's T-Shirt|3399",
-                    "CodeProject.com Body Suit|1399",
-                    "CodeProject Mug Mugs|1099",
-                    "RootAdmin Mug|1099",
-                    "Drinking Glass|1099",
-                    "Stein|1399",
-                    "Mousepad|1099",
-                    "Square Sticker|299",
+                    "Sheep|sheep1|1499",
+                    "Guitar Birthday Card|guitarcard|299",
+                    "Alpaca|alpaca1|999",
+                    "Sheep|sheep2|1499",
+                    "Guitar Birthday Card|guitarcard|299",
+                    "Alpaca|alpaca1|999",
+                    "Sheep|sheep1|1499",
+                    "Guitar Birthday Card|guitarcard|299",
+                    "Alpaca|alpaca1|999"
+
                 };
 
                 var index = 1;
                 foreach (var p in products)
                 {
                     var description = p.Split('|')[0];
-                    var price = decimal.Parse(p.Split('|')[1]) / 100M;
+                    var filename = p.Split('|')[1];
+                    var price = decimal.Parse(p.Split('|')[2]) / 100M;
 
                     var product =
                         db.Product.Add(new Product
                         {
                             SKU = Guid.NewGuid().ToString(),
-                            SmallImagePath = string.Format("Images/Products/small_{0}.jpg", index),
-                            LargeImagePath = string.Format("Images/Products/large_{0}.jpg", index),
+                            SmallImagePath = string.Format("Images/Products/{0}.jpg", filename),
+                            LargeImagePath = string.Format("Images/Products/{0}.jpg", filename),
                             Description = description,
                             Price = price
                         });
