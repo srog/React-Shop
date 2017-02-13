@@ -5,7 +5,8 @@ namespace ReactShop.Core.Data.Products
 {
     public interface IGetProducts
     {
-        IEnumerable<ProductDTO> Get();
+        List<ProductDTO> Get();
         ProductDTO GetBySku(string sku);
+        ProductDTO GetById(int id);
     }
 }

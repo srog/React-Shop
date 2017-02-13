@@ -11,12 +11,13 @@ namespace ReactShop.Web.WebApi
     {
         private readonly ICheckoutManager _checkoutManager;
         private readonly IGetCart _getCart;
+        private readonly ISaveCart _saveCart;
 
         public CartController()
         {
             _checkoutManager = AutoFacHelper.Resolve<ICheckoutManager>();
             _getCart = AutoFacHelper.Resolve<IGetCart>();
-
+            _saveCart = AutoFacHelper.Resolve<ISaveCart>();
         }
 
         // POST: api/Cart
@@ -24,14 +25,18 @@ namespace ReactShop.Web.WebApi
         [ValidateHttpAntiForgeryToken]
         public CartDTO Post([FromBody]CartItemDTO value)
         {
-            var cart = _getCart.Get();
-            var cartItem = cart.CartItems.SingleOrDefault(i => i.SKU == value.SKU);
-            if (cartItem != null)
-             {
-                cartItem.Quantity = value.Quantity;
-                var recalculatedCart = _getCart.Get(cart.CartItems);
+            var cart = _getCart.Get(_checkoutManager.GetCustomer());
+            var cartItemDTO = cart.CartItems.SingleOrDefault(i => i.SKU == value.SKU);
+            if (cartItemDTO != null)
+            {
+                cartItemDTO.Quantity = value.Quantity;
+                _saveCart.Save(cartItemDTO.ToCartItem());
+                if (cartItemDTO.Quantity == 0)
+                {
+                    _saveCart.Remove(cartItemDTO.ToCartItem());
+                }
 
-                _checkoutManager.SaveCart(cartItem);
+                var recalculatedCart = _getCart.Get(_checkoutManager.GetCustomer());
                 return recalculatedCart;
             }
             else

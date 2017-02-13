@@ -6,14 +6,14 @@
             SmallImagePath: item.SmallImagePath,
             LargeImagePath: item.LargeImagePath,
             Description: item.Description,
-            SoldAndDeliveredBy: item.SoldAndDeliveredBy,
+            //SoldAndDeliveredBy: item.SoldAndDeliveredBy,
             Price: item.Price,
             Quantity: item.Quantity,
             Subtotal: item.Subtotal
         };
     },
     updateState: function(change) {
-        this.setState(Object.assign({}, this.state, change))
+        this.setState(Object.assign({}, this.state, change));
     },
     handleIncrement: function() {
         this.postQuantity(this.state.Quantity + 1);
@@ -113,7 +113,7 @@ class CartView extends React.Component {
                 SmallImagePath: item.SmallImagePath,
                 LargeImagePath: item.LargeImagePath,
                 Description: item.Description,
-                SoldAndDeliveredBy: item.SoldAndDeliveredBy,
+                //SoldAndDeliveredBy: item.SoldAndDeliveredBy,
                 Price: item.Price,
                 Quantity: item.Quantity,
                 Subtotal: item.Subtotal
@@ -137,9 +137,9 @@ class CartView extends React.Component {
             DiscountValue: cart.DiscountValue,
             Total: cart.Total
         });
-        if (cartItem.Quantity == 0) {
+        if (cartItem.Quantity === 0) {
             newState.items.splice(newState.items.findIndex(i =>
-                i.SKU == cartItem.SKU), 1);
+                i.SKU === cartItem.SKU), 1);
         }
         this.setState(newState);
     }
