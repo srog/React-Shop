@@ -1,9 +1,10 @@
-﻿using ReactShop.Core.DTOs;
+﻿using ReactShop.Core.Entities;
 
 namespace ReactShop.Core.Data.Cart
 {
     public interface ISaveCart
     {
-        void Save(CartDTO cart);
+        void Save(CartItem cartItem);
+        void Remove(CartItem cartItem);
     }
 }

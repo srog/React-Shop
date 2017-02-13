@@ -1,4 +1,6 @@
-﻿namespace ReactShop.Core.DTOs
+﻿using ReactShop.Core.Entities;
+
+namespace ReactShop.Core.DTOs
 {
     public class CustomerDTO
     {
@@ -12,6 +14,27 @@
         public string Postcode { get; set; }
         public string Telephone { get; set; }
         public string Email { get; set; }
-        
+
+        public static CustomerDTO FromCustomer(Customer customer)
+        {
+            return new CustomerDTO
+            {
+                Id = customer.Id,
+                ForeName = customer.ForeName,
+                Surname = customer.Surname,
+                Address1 = customer.Address1,
+                Address2 = customer.Address2,
+                Address3 = customer.Address3,
+                Postcode = customer.Postcode,
+                Title = customer.Title,
+                Email = customer.Email,
+                Telephone = customer.Telephone
+            };
+        }
+
+        public static explicit operator CustomerDTO(Customer customer)
+        {
+            return FromCustomer(customer);
+        }
     }
 }

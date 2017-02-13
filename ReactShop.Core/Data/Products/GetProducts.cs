@@ -6,27 +6,48 @@ namespace ReactShop.Core.Data.Products
 {
     public class GetProducts : IGetProducts
     {
-        public IEnumerable<ProductDTO> Get()
+        public List<ProductDTO> Get()
         {
             using (var db = new Context())
             {
-                return db.Product
-                    .Select(i =>
-                        new ProductDTO
-                        {
-                            Id = i.Id,
-                            SKU = i.SKU,
-                            SmallImagePath = i.SmallImagePath,
-                            Description = i.Description,
-                            Price = i.Price
-                        }).ToList();
+                return db.Product.Select(p => new ProductDTO
+                {
+                    Id = p.Id,
+                    Description = p.Description,
+                    SKU = p.SKU,
+                    SmallImagePath = p.SmallImagePath,
+                    LargeImagePath = p.LargeImagePath,
+                    Price = p.Price
+                }).ToList();
             }
         }
 
         public ProductDTO GetBySku(string sku)
         {
-            var product = Get().First(p => p.SKU == sku);
-            return product;
+            var product = Get().FirstOrDefault(p => p.SKU == sku);
+            return product == null ? null : new ProductDTO
+            {
+                SKU = product.SKU,
+                Description = product.Description,
+                SmallImagePath = product.SmallImagePath,
+                LargeImagePath = product.LargeImagePath,
+                Id = product.Id,
+                Price = product.Price
+            };
+        }
+
+        public ProductDTO GetById(int id)
+        {
+            var product = Get().FirstOrDefault(p => p.Id == id);
+            return product == null ? null : new ProductDTO
+            {
+                SKU = product.SKU,
+                Description = product.Description,
+                SmallImagePath = product.SmallImagePath,
+                LargeImagePath = product.LargeImagePath,
+                Id = product.Id,
+                Price = product.Price
+            };
         }
     }
 }

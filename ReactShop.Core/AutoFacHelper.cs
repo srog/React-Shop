@@ -20,6 +20,8 @@ namespace ReactShop.Core
 
             builder.RegisterType<GetProducts>().As<IGetProducts>();
             builder.RegisterType<GetCart>().As<IGetCart>();
+            builder.RegisterType<GetCartItem>().As<IGetCartItem>();
+            builder.RegisterType<SaveCart>().As<ISaveCart>();
             builder.RegisterType<CreateOrder>().As<ICreateOrder>();
             builder.RegisterType<GetOrders>().As<IGetOrders>();
             builder.RegisterType<SaveCart>().As<ISaveCart>();

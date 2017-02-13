@@ -61,7 +61,9 @@
     <Compile Include="CheckoutManager.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Data\Cart\GetCart.cs" />
+    <Compile Include="Data\Cart\GetCartItem.cs" />
     <Compile Include="Data\Cart\IGetCart.cs" />
+    <Compile Include="Data\Cart\IGetCartItem.cs" />
     <Compile Include="Data\Cart\ISaveCart.cs" />
     <Compile Include="Data\Cart\SaveCart.cs" />
     <Compile Include="Data\Customers\GetCustomer.cs" />

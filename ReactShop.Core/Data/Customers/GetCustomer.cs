@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ReactShop.Core.DTOs;
+using ReactShop.Core.Entities;
 
 namespace ReactShop.Core.Data.Customers
 {
     public class GetCustomer : IGetCustomer
     {
-        public IEnumerable<CustomerDTO> Get()
+        public IEnumerable<CustomerDTO> GetAll()
         {
             using (var db = new Context())
             {
@@ -28,8 +29,11 @@ namespace ReactShop.Core.Data.Customers
 
         public CustomerDTO Get(int id)
         {
-            var customer = Get().FirstOrDefault(c => c.Id == id);
-            return customer;
+            using (var db = new Context())
+            {
+                Customer customer = db.Customer.FirstOrDefault(c => c.Id == id);
+                return CustomerDTO.FromCustomer(customer);
+            }
         }
     }
 }

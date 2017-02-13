@@ -8,23 +8,23 @@ namespace ReactShop.Web.Controllers
 {
     public class NewProductController : Controller
     {
-        readonly ICheckoutManager checkoutManager;
+        //readonly ICheckoutManager checkoutManager;
 
         public NewProductController()
         {
-            this.checkoutManager = AutoFacHelper.Resolve<ICheckoutManager>();
+            //this.checkoutManager = AutoFacHelper.Resolve<ICheckoutManager>();
         }
 
         [System.Web.Mvc.HttpPost]
         public ActionResult Submit([FromBody]NewProductDTO newProduct)
         {
-            checkoutManager.SaveCart(new CartItemDTO
-            {
-                SKU = Guid.NewGuid().ToString(),
-                Description  = newProduct.Description,
-                Price = newProduct.UnitPrice,
-                Quantity = 1
-            });
+            //checkoutManager.SaveCart(new CartItemDTO
+            //{
+            //    SKU = Guid.NewGuid().ToString(),
+            //    Description  = newProduct.Description,
+            //    Price = newProduct.UnitPrice,
+            //    Quantity = 1
+            //});
             return RedirectToAction("Cart", "Home");
         }
     }

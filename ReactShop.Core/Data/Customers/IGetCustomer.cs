@@ -5,7 +5,7 @@ namespace ReactShop.Core.Data.Customers
 {
     public interface IGetCustomer
     {
-        IEnumerable<CustomerDTO> Get();
+        IEnumerable<CustomerDTO> GetAll();
         CustomerDTO Get(int id);
     }
 }

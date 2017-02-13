@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ReactShop.Core.Entities;
 
 namespace ReactShop.Core
@@ -9,7 +10,17 @@ namespace ReactShop.Core
         {
             var db = new Context();
 
-            if (!db.Database.Exists())
+            if (db.Database.Exists())
+            {
+                var rows = from ci in db.CartItem
+                           select ci;
+                foreach (var row in rows)
+                {
+                    db.CartItem.Remove(row);
+                }
+                db.SaveChanges();
+            }
+            else
             {
                 db.Database.CreateIfNotExists();
 
@@ -44,13 +55,7 @@ namespace ReactShop.Core
                             Price = price
                         });
 
-                    var cartItem =
-                        db.CartItem.Add(new CartItem
-                        {
-                            Product = product,
-                            Quantity = 1
-                        });
-
+                    
                     index++;
                 }
 

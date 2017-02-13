@@ -4,8 +4,9 @@ namespace ReactShop.Core
 {
     public interface ICheckoutManager
     {
-        void SaveCart(CartItemDTO modifiedItem);
+    
         CheckoutSummaryDTO GetCheckoutSummary();
 
+        int GetCustomer();
     }
 }
