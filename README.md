@@ -13,7 +13,7 @@ Testing e-c opportunities..
 * Header info - user / cart / links
 * Menu - Left (Home, Products, Orders, Account)
 * Menu - Top (Home ---  Search -  View Cart  - About Us -- login info - Logout )
-
+* Paypal integration
 
 ## Bugs:
 
