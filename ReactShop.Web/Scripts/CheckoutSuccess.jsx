@@ -63,7 +63,7 @@
                         <Column md={6}>
                             <br />
                             <p className="float-right">
-                                Delivery time is {this.props.model.DeliveryUpTo} days
+                                Delivery time is {this.props.model.DeliveryUpTo} 
                             </p>
                         </Column>
                     </Row>
@@ -95,7 +95,7 @@
                     <Column md={9}></Column>
                     <a href="/">
                         <Column md={2}>
-                            <Button bsStyle="success">Back to product catalog</Button>
+                            <Button bsStyle="success">Back to Product Catalog</Button>
                         </Column>
                     </a>
                 </Row>

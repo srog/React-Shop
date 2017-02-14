@@ -16,7 +16,7 @@ namespace ReactShop.Core.Data.Orders
                 {
                     db.Order.Add(new Order
                     {
-                        CustomerId = 1, // cart.CustomerId,
+                        CustomerId = cart.CustomerId,
                         DatePlaced = DateTime.Now,
                         Products = cart.CartItems.Select(ci => ci.Id),
                         TotalPrice = cart.Total

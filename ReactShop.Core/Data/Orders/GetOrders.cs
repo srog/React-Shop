@@ -1,13 +1,35 @@
 ﻿using System.Collections.Generic;
-using ReactShop.Core.Entities;
+using System.Linq;
+using ReactShop.Core.DTOs;
 
 namespace ReactShop.Core.Data.Orders
 {
     public class GetOrders : IGetOrders
     {
-        public IEnumerable<Order> Get()
+        public IEnumerable<OrderDTO> Get()
         {
-            throw new System.NotImplementedException();
+            using (var db = new Context())
+            {
+                return db.Order.Select(o => new OrderDTO
+                {
+                    Id = o.Id,
+                    CustomerId = o.CustomerId,
+                    TotalPrice = o.TotalPrice,
+                    Products = o.Products,
+                    DatePlaced = o.DatePlaced,
+                    Status = o.Status
+                }).ToList();
+            }
+        }
+
+        public OrderDTO GetById(int id)
+        {
+            return Get().FirstOrDefault(o => o.Id == id);
+        }
+
+        public IEnumerable<OrderDTO> GetByCustomer(int customerId)
+        {
+            return Get().Where(o => o.CustomerId == customerId).ToList();
         }
     }
 }
