@@ -4,8 +4,6 @@ Testing e-c opportunities..
 ##TO DO LIST:
 * Fix details button - popup?
 * Database Project
-* Product images / descriptions / branding - ongoing
-* Styling - ongoing
 * Search functionality
 * List Items / Categories
 * Admin UI
@@ -15,6 +13,9 @@ Testing e-c opportunities..
 * Menu - Top (Home ---  Search -  View Cart  - About Us -- login info - Logout )
 * Paypal integration
 
-## Bugs:
+## Ongoing work:
+* Product images / descriptions / branding 
+* Styling
 
+## Bugs:
 * Cart - add/remove quantities first-click, and refresh
