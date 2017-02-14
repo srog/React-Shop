@@ -4,13 +4,14 @@ Testing e-c opportunities..
 ##TO DO LIST:
 * Fix details button - popup?
 * Database Project
-* Search functionality
+* Improve Search
 * List Items / Categories
 * Admin UI
 * Home page link
 * Header info - user / cart / links
 * Menu - Left (Home, Products, Orders, Account)
-* Menu - Top (Home ---  Search -  View Cart  - About Us -- login info - Logout )
+* Improve navbar menu
+* User integration - improve login/logout
 * Paypal integration
 
 ## Ongoing work:
