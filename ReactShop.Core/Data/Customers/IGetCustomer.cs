@@ -7,6 +7,5 @@ namespace ReactShop.Core.Data.Customers
     {
         IEnumerable<CustomerDTO> GetAll();
         CustomerDTO GetById(int id);
-        CustomerDTO GetCurrent();
     }
 }
