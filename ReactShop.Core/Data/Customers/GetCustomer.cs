@@ -22,18 +22,25 @@ namespace ReactShop.Core.Data.Customers
                             Address1 = i.Address1,
                             Address2 = i.Address2,
                             Address3 = i.Address3,
-                            Postcode = i.Postcode
+                            Postcode = i.Postcode,
+                            Email = i.Email,
+                            Telephone = i.Telephone
                         }).ToList();
             }
         }
 
-        public CustomerDTO Get(int id)
+        public CustomerDTO GetById(int id)
         {
             using (var db = new Context())
             {
                 Customer customer = db.Customer.FirstOrDefault(c => c.Id == id);
                 return CustomerDTO.FromCustomer(customer);
             }
+        }
+
+        public CustomerDTO GetCurrent()
+        {
+            return GetById(1);
         }
     }
 }

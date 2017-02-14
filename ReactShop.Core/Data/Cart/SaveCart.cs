@@ -11,13 +11,11 @@ namespace ReactShop.Core.Data.Cart
             {
                 using (var transaction = db.Database.BeginTransaction())
                 {
-
                     db.CartItem.AddOrUpdate(cartItem);
                     db.SaveChanges();
                     transaction.Commit();
                 }
             }
-
         }
 
         public void Remove(CartItem cartItem)

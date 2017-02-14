@@ -146,10 +146,10 @@ class CartView extends React.Component {
 
     render() {
         const header = (<Row className="vertical-align">
-                                    <Column md={6} className="justify-left">item(s)</Column>
-                                    <Column md={2} className="justify-center">unit price</Column>
-                                    <Column md={2} className="justify-center">quantity</Column>
-                                    <Column md={2} className="justify-right">subtotal</Column>
+                                    <Column md={6} className="justify-left">Item(s)</Column>
+                                    <Column md={2} className="justify-center">Unit Price</Column>
+                                    <Column md={2} className="justify-center">Quantity</Column>
+                                    <Column md={2} className="justify-right">Subtotal</Column>
         </Row>);
 
         const body = (this.state.items.map(item => {
@@ -202,7 +202,7 @@ class CartView extends React.Component {
         return (
                 <div className="cart">
                     {
-                        this.state.items.length == 0 ? null :
+                        this.state.items.length === 0 ? null :
                         <div>
                         {/* TITLE */}
                         <h3>Your shopping cart ({ this.state.items.length} <Pluralize value={this.state.items.length} singular="item" plural="items" />)</h3>

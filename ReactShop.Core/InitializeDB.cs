@@ -12,16 +12,26 @@ namespace ReactShop.Core
 
             if (db.Database.Exists())
             {
+                // initial clear out of data
+                // remove any cart items, orders
                 var rows = from ci in db.CartItem
                            select ci;
                 foreach (var row in rows)
                 {
                     db.CartItem.Remove(row);
                 }
+                var orders = from ord in db.Order   
+                           select ord;
+                foreach (var order in orders)
+                {
+                    db.Order.Remove(order);
+                }
                 db.SaveChanges();
             }
             else
             {
+                // create DB if doesn't exist
+                // initialise products, customers
                 db.Database.CreateIfNotExists();
 
                 var products = new string[]

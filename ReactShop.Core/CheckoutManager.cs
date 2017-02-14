@@ -20,7 +20,7 @@ namespace ReactShop.Core
 
         public int GetCustomer()
         {
-            return 1;
+            return _getCustomer.GetCurrent().Id;
         }
 
         public CheckoutSummaryDTO GetCheckoutSummary()
@@ -33,7 +33,7 @@ namespace ReactShop.Core
                 OrderNumber = "123456789",
                 DeliveryUpToNWorkingDays = 4,
                 Total = cart.Total,
-                CustomerInfo = _getCustomer.Get(GetCustomer()),
+                CustomerInfo = _getCustomer.GetById(GetCustomer()),
                 CartItems = cart.CartItems
             };
         }
