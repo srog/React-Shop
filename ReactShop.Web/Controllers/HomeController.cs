@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using ReactShop.Core;
 using System.Web.Mvc;
+using ReactShop.Core.Common;
 using ReactShop.Core.Data.Cart;
 using ReactShop.Core.Data.Orders;
 using ReactShop.Core.Data.Products;
@@ -36,12 +36,21 @@ namespace ReactShop.Web.Controllers
 
         public ActionResult Cart()
         {
-            return View(_getCart.Get(_checkoutManager.GetCustomer()));
+            return View(_getCart.Get(Identity.LoggedInUserId));
+        }
+
+        public ActionResult SearchBar(string searchText)
+        {
+            var results = _getProducts.Get()
+                .Where(p => p.Description.ToLower().Contains(searchText.ToLower()))
+                .ToList();
+
+            return View("Index", results);
         }
 
         public ActionResult CheckoutSuccess()
         {
-            _createOrder.Create(_getCart.Get(_checkoutManager.GetCustomer()));
+            _createOrder.Create(_getCart.Get(Identity.LoggedInUserId));
             return View(_checkoutManager.GetCheckoutSummary());
         }
 
@@ -50,7 +59,7 @@ namespace ReactShop.Web.Controllers
         public ActionResult AddToCart(string sku)
         {
             var product = _getProducts.GetBySku(sku);
-            var cartList = _getCart.Get(_checkoutManager.GetCustomer());
+            var cartList = _getCart.Get(Identity.LoggedInUserId);
             var existingcartItemDTO = cartList.CartItems.FirstOrDefault(ci => ci.Id == product.Id);
             if (existingcartItemDTO != null)
             {
@@ -62,7 +71,7 @@ namespace ReactShop.Web.Controllers
             {
                 _saveCart.Save(new CartItem
                 {
-                    CustomerId = _checkoutManager.GetCustomer(),
+                    CustomerId = Core.Common.Identity.LoggedInUserId,
                     Quantity = 1,
                     ProductId = product.Id
                 });

@@ -15,6 +15,11 @@ namespace ReactShop.Core.DTOs
         public string Telephone { get; set; }
         public string Email { get; set; }
 
+        public string DisplayName
+        {
+            get { return Title + " " + ForeName + " " + Surname; }
+        }
+
         public static CustomerDTO FromCustomer(Customer customer)
         {
             return new CustomerDTO

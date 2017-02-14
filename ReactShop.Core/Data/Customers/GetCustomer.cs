@@ -37,10 +37,5 @@ namespace ReactShop.Core.Data.Customers
                 return CustomerDTO.FromCustomer(customer);
             }
         }
-
-        public CustomerDTO GetCurrent()
-        {
-            return GetById(1);
-        }
     }
 }

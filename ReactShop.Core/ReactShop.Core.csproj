@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="AutoFacHelper.cs" />
     <Compile Include="CheckoutManager.cs" />
+    <Compile Include="Common\Identity.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Data\Cart\GetCart.cs" />
     <Compile Include="Data\Cart\GetCartItem.cs" />

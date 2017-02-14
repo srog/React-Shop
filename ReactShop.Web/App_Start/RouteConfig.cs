@@ -9,6 +9,24 @@ namespace ReactShop.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "login",
+            //    url: "login",
+            //    defaults: new { controller = "User", action = "login" }
+            //);
+
+            //routes.MapRoute(
+            //    name: "logout",
+            //    url: "logout",
+            //    defaults: new { controller = "User", action = "logout" }
+            //);
+
+            routes.MapRoute(
+                name: "searchbar",
+                url: "searchbar",
+                defaults: new { controller = "Home", action = "searchbar" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
