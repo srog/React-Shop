@@ -1,0 +1,42 @@
+﻿@using ReactShop.Core.Common
+
+<div>
+    @using (Html.BeginForm("Login", "User"))
+    {
+        <table class="table-striped" id="loginpopuptable">
+            @*<tr id="heading">
+            <td colspan="2" style="width: 60%; color: white; font-weight: bold; vertical-align: top; align-content: right">
+                <a href="javascript:void(0)" onclick="hidePopup();">Close</a>
+            </td>
+        </tr>
+        <tr></tr>*@
+            <tr>
+                <td>
+                    Username
+                </td>
+                <td>
+                    
+                    <input type="text" id="txtUsername" name="customerId"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label(" ", new {id = "lblError"})
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="btn-add">
+                        <button type="submit" class="glyphicon-log-in">
+                            Login
+                        </button>
+                    </p>
+
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <input type="hidden" id="usernamedata" value="@Identity.IdentityName()"/>
+    }
+</div>

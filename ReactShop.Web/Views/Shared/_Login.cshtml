@@ -2,7 +2,12 @@
 
 @if (!Identity.IsLoggedIn())
 {
-    @Html.ActionLink("Login", "login", "user", routeValues: null, htmlAttributes: new { @class = "btn navbar-btn navbar-right btn-warning" })
+
+    @Ajax.ActionLink("Login", "DoLogin", "Home", new AjaxOptions
+        {
+            HttpMethod = "GET", UpdateTargetId = "loginpopup", InsertionMode = InsertionMode.Replace, OnSuccess = "openPopup",
+            
+        })
 
 }
 else
@@ -14,5 +19,5 @@ else
 
 }
 
-
+<div id="loginpopup" class="modal-dialog modal"></div>
 
