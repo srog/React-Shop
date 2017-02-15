@@ -2,7 +2,7 @@
 Testing e-c opportunities..
 
 ##TO DO LIST:
-* Fix details button - popup?
+* Fix product details popup
 * Database Project
 * Improve Search
 * List Items / Categories
@@ -13,6 +13,7 @@ Testing e-c opportunities..
 * Improve navbar menu
 * User integration - improve login/logout
 * Paypal integration
+* Improved Error handling 
 
 ## Ongoing work:
 * Product images / descriptions / branding 
