@@ -85,6 +85,12 @@ namespace ReactShop.Web.Controllers
             var productDetail = _getProducts.GetBySku(sku);
             return PartialView("_Details", productDetail.ToProduct());
         }
+
+        [HttpGet]
+        public ActionResult DoLogin()
+        {
+            return PartialView("LoginPopup");
+        }
     }
 }
 

@@ -9,8 +9,8 @@ namespace ReactShop.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new BabelBundle("~/bundles/js").Include(
-                "~/Scripts/jquery-3.1.0.js",
-                "~/Scripts/jquery-ui-1.12.1.min.js",
+                "~/Scripts/jquery-3.1.0.min.js",
+                "~/Scripts/jquery-ui-1.12.0.min.js",
                 "~/Scripts/jquery-validate.min.js",
                 "~/Scripts/jquery.unobtrusive-ajax.min.js",
                 "~/Scripts/react/react.min.js",
@@ -20,7 +20,8 @@ namespace ReactShop.Web
                 "~/Scripts/Components.jsx",
                 "~/Scripts/Cart.jsx",
                 "~/Scripts/CheckoutSuccess.jsx",
-                "~/Scripts/showdown.js"
+                "~/Scripts/showdown.js",
+                "~/Scripts/loginpopup.js"
             ));
 
               // Forces files to be combined and minified in debug mode

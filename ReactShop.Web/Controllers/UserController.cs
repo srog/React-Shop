@@ -11,9 +11,9 @@ namespace ReactShop.Web.Controllers
             return View();
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string customerId)
         {
-            Identity.Login();
+            Identity.Login(customerId);
             return RedirectToAction("Index", "Home");
         }
 
