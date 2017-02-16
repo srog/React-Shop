@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using ReactShop.Core.Common;
 using ReactShop.Core.Data.Cart;
 using ReactShop.Core.Data.Categories;
 using ReactShop.Core.Data.Customers;
@@ -31,6 +32,7 @@ namespace ReactShop.Core
             builder.RegisterType<SaveCustomer>().As<ISaveCustomer>();
             builder.RegisterType<SaveProduct>().As<ISaveProduct>();
             builder.RegisterType<GetCategory>().As<IGetCategory>();
+            builder.RegisterType<ConfigManager>().As<IConfigManager>();
 
             container = builder.Build();
         }
