@@ -20,13 +20,14 @@ namespace ReactShop.Core
         public CheckoutSummaryDTO GetCheckoutSummary()
         {
             var cart = _getCart.Get(Common.Identity.LoggedInUserId);
-            
+            var customer = _getCustomer.GetById(Common.Identity.LoggedInUserId);
+
             return new CheckoutSummaryDTO
             {
                 OrderNumber = "123456789",
                 DeliveryUpToNWorkingDays = 4,
                 Total = cart.Total,
-                CustomerInfo = _getCustomer.GetById(Common.Identity.LoggedInUserId),
+                CustomerInfo = CustomerDTO.FromCustomer(customer),
                 CartItems = cart.CartItems
             };
         }

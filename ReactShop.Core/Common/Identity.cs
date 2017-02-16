@@ -1,4 +1,5 @@
 ﻿using ReactShop.Core.Data.Customers;
+using ReactShop.Core.DTOs;
 
 namespace ReactShop.Core.Common
 {
@@ -11,7 +12,7 @@ namespace ReactShop.Core.Common
 
         public static string IdentityName()
         {
-            return CurrentUserId == 0 ? "" :  _getCustomer.GetById(CurrentUserId).DisplayName;
+            return CurrentUserId == 0 ? "" : CustomerDTO.FromCustomer(_getCustomer.GetById(CurrentUserId)).DisplayName;
         }
 
         public static bool IsLoggedIn()

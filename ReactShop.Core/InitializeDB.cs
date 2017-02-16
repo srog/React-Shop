@@ -35,29 +35,42 @@ namespace ReactShop.Core
             else
             {
                 // create DB if doesn't exist
-                // initialise products, customers
+                // initialise categories, products, customers
                 db.Database.CreateIfNotExists();
+
+                db.Category.Add(new Category()
+                {
+                    Description = "Cards",
+                    Id = 1
+                });
+                db.Category.Add(new Category()
+                {
+                    Description = "Other",
+                    Id = 2
+                });
 
                 var products = new string[]
                 {
-                    "Sheep|sheep1|1499",
-                    "Guitar Birthday Card|guitarcard|299",
-                    "Alpaca|alpaca1|999",
-                    "Sheep|sheep2|1499",
-                    "Guitar Birthday Card|guitarcard|299",
-                    "Alpaca|alpaca1|999",
-                    "Sheep|sheep1|1499",
-                    "Guitar Birthday Card|guitarcard|299",
-                    "Alpaca|alpaca1|999"
+                    "Sheep|sheep1|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+                    "Sheep|sheep2|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+                    "Sheep|sheep1|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2"
 
                 };
 
                 var index = 1;
                 foreach (var p in products)
                 {
-                    var description = p.Split('|')[0];
-                    var filename = p.Split('|')[1];
-                    var price = decimal.Parse(p.Split('|')[2]) / 100M;
+                    var productBits = p.Split('|');
+                    var description = productBits[0];
+                    var filename = productBits[1];
+                    var price = decimal.Parse(productBits[2]) / 100M;
+                    var category = int.Parse(productBits[3]);
 
                     var product =
                         db.Product.Add(new Product
@@ -66,6 +79,7 @@ namespace ReactShop.Core
                             SmallImagePath = string.Format("Images/Products/{0}.jpg", filename),
                             LargeImagePath = string.Format("Images/Products/{0}.jpg", filename),
                             Description = description,
+                            CategoryId = category,
                             Price = price
                         });
 

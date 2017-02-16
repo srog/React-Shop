@@ -15,6 +15,7 @@ namespace ReactShop.Core.Data.Products
                     Id = p.Id,
                     Description = p.Description,
                     SKU = p.SKU,
+                    CategoryId = p.CategoryId,
                     SmallImagePath = p.SmallImagePath,
                     LargeImagePath = p.LargeImagePath,
                     Price = p.Price
@@ -28,6 +29,7 @@ namespace ReactShop.Core.Data.Products
             return product == null ? null : new ProductDTO
             {
                 SKU = product.SKU,
+                CategoryId = product.CategoryId,
                 Description = product.Description,
                 SmallImagePath = product.SmallImagePath,
                 LargeImagePath = product.LargeImagePath,
@@ -42,6 +44,7 @@ namespace ReactShop.Core.Data.Products
             return product == null ? null : new ProductDTO
             {
                 SKU = product.SKU,
+                CategoryId = product.CategoryId,
                 Description = product.Description,
                 SmallImagePath = product.SmallImagePath,
                 LargeImagePath = product.LargeImagePath,
