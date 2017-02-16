@@ -6,6 +6,12 @@ namespace ReactShop.Core.Data.Orders
 {
     public class GetOrders : IGetOrders
     {
+        private readonly IGetOrderItems _getOrderItems;
+
+        public GetOrders()
+        {
+            _getOrderItems = AutoFacHelper.Resolve<IGetOrderItems>();
+        }
         public IEnumerable<OrderDTO> Get()
         {
             using (var db = new Context())
@@ -15,7 +21,7 @@ namespace ReactShop.Core.Data.Orders
                     Id = o.Id,
                     CustomerId = o.CustomerId,
                     TotalPrice = o.TotalPrice,
-                    Products = o.Products,
+                    OrderItemIds = _getOrderItems.Get(o.Id).Select(oi => oi.Id),
                     DatePlaced = o.DatePlaced,
                     Status = o.Status
                 }).ToList();

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using ReactShop.Core.DTOs;
 using ReactShop.Core.Entities;
 
@@ -14,13 +13,27 @@ namespace ReactShop.Core.Data.Orders
             {
                 using (var transaction = db.Database.BeginTransaction())
                 {
-                    db.Order.Add(new Order
+                    var newOrder = db.Order.Add(new Order
                     {
                         CustomerId = cart.CustomerId,
                         DatePlaced = DateTime.Now,
-                        Products = cart.CartItems.Select(ci => ci.Id),
+                        Status = 1, 
                         TotalPrice = cart.Total
                     });
+
+                    db.SaveChanges();
+
+                    foreach (var item in cart.CartItems)
+                    {
+                        db.OrderItem.Add(new OrderItem
+                        {
+                            Description = item.Description,
+                            Price = item.Price,
+                            ProductId = item.ProductId,
+                            OrderId = newOrder.Id, 
+                            Status = 1
+                        });
+                    }
 
                     result = db.SaveChanges();
                     transaction.Commit();

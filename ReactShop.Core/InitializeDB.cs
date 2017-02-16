@@ -26,6 +26,10 @@ namespace ReactShop.Core
                 {
                     db.Order.Remove(order);
                 }
+                foreach (var orderItem in db.OrderItem)
+                {
+                    db.OrderItem.Remove(orderItem);
+                }
                 db.SaveChanges();
             }
             else

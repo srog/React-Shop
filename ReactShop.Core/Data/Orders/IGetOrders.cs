@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using ReactShop.Core.DTOs;
-using ReactShop.Core.Entities;
 
 namespace ReactShop.Core.Data.Orders
 {
