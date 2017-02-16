@@ -33,7 +33,7 @@ namespace ReactShop.Core.Data.Cart
                     Price = product.Price,
                     Quantity = cartItem.Quantity,
                     SKU = product.SKU,
-                    CustomerId = cartItem.CustomerId,
+                    CustomerId = customerId,
                     ProductId = product.Id
                 });
             }
@@ -49,6 +49,7 @@ namespace ReactShop.Core.Data.Cart
                 DiscountRate = discountRule.Rate * 100M,
                 DiscountValue = discountValue,
                 Total = total,
+                CustomerId = customerId,
                 CartItems = cartItemDTOList
             };
         }

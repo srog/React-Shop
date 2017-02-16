@@ -20,8 +20,7 @@ namespace ReactShop.Core
         public CheckoutSummaryDTO GetCheckoutSummary()
         {
             var cart = _getCart.Get(Common.Identity.LoggedInUserId);
-            // create order
-
+            
             return new CheckoutSummaryDTO
             {
                 OrderNumber = "123456789",
