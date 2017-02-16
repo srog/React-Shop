@@ -67,8 +67,12 @@
     <Compile Include="Data\Cart\IGetCartItem.cs" />
     <Compile Include="Data\Cart\ISaveCart.cs" />
     <Compile Include="Data\Cart\SaveCart.cs" />
+    <Compile Include="Data\Categories\GetCategory.cs" />
+    <Compile Include="Data\Categories\IGetCategory.cs" />
     <Compile Include="Data\Customers\GetCustomer.cs" />
     <Compile Include="Data\Customers\IGetCustomer.cs" />
+    <Compile Include="Data\Customers\ISaveCustomer.cs" />
+    <Compile Include="Data\Customers\SaveCustomer.cs" />
     <Compile Include="Data\Orders\CreateOrder.cs" />
     <Compile Include="Data\Orders\GetOrderItems.cs" />
     <Compile Include="Data\Orders\GetOrders.cs" />
@@ -77,6 +81,8 @@
     <Compile Include="Data\Orders\IGetOrders.cs" />
     <Compile Include="Data\Products\GetProducts.cs" />
     <Compile Include="Data\Products\IGetProducts.cs" />
+    <Compile Include="Data\Products\ISaveProduct.cs" />
+    <Compile Include="Data\Products\SaveProduct.cs" />
     <Compile Include="DiscountManager.cs" />
     <Compile Include="DTOs\CartDTO.cs" />
     <Compile Include="DTOs\OrderDTO.cs" />
@@ -87,6 +93,7 @@
     <Compile Include="DTOs\CheckoutSummaryDTO.cs" />
     <Compile Include="DTOs\DiscountRuleDTO.cs" />
     <Compile Include="DTOs\NewProductDTO.cs" />
+    <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />

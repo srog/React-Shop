@@ -6,6 +6,7 @@ namespace ReactShop.Core.DTOs
     {
         public int Id { get; set; }
         public string SKU { get; set; }
+        public int CategoryId { get; set; }
         public string Description { get; set; }
         public string SmallImagePath { get; set; }
         public string LargeImagePath { get; set; }
@@ -19,7 +20,7 @@ namespace ReactShop.Core.DTOs
 
         public Product ToProduct()
         {
-            return new Product(Id, SKU, Description, SmallImagePath, LargeImagePath, Price);
+            return new Product(Id, SKU, CategoryId, Description, SmallImagePath, LargeImagePath, Price);
         }
     }
 }

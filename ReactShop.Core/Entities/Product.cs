@@ -10,11 +10,12 @@ namespace ReactShop.Core.Entities
             
         }
 
-        public Product(int id, string sku, string description, string smallImagePath, string largeImagePath,
+        public Product(int id, string sku, int categoryId, string description, string smallImagePath, string largeImagePath,
             decimal price)
         {
             Id = id;
             SKU = sku;
+            CategoryId = categoryId;
             Description = description;
             SmallImagePath = smallImagePath;
             LargeImagePath = largeImagePath;
@@ -24,6 +25,7 @@ namespace ReactShop.Core.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string SKU { get; set; }
+        public int CategoryId { get; set; }
         public string Description { get; set; }
         public string SmallImagePath { get; set; }
         public string LargeImagePath { get; set; }

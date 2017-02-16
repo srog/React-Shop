@@ -29,12 +29,11 @@ namespace ReactShop.Core.Data.Customers
             }
         }
 
-        public CustomerDTO GetById(int id)
+        public Customer GetById(int id)
         {
             using (var db = new Context())
             {
-                Customer customer = db.Customer.FirstOrDefault(c => c.Id == id);
-                return CustomerDTO.FromCustomer(customer);
+                return db.Customer.FirstOrDefault(c => c.Id == id);
             }
         }
     }

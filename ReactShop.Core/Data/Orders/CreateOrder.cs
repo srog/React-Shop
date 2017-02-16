@@ -34,8 +34,17 @@ namespace ReactShop.Core.Data.Orders
                             Status = 1
                         });
                     }
-
                     result = db.SaveChanges();
+
+                    // remove the cart items!
+                    foreach (var cartItemDto in cart.CartItems)
+                    {
+                        var cartItem = cartItemDto.ToCartItem();
+                        db.CartItem.Attach(cartItem);
+                        db.CartItem.Remove(cartItem);
+                    }
+
+                    db.SaveChanges();
                     transaction.Commit();
                 }
             }
