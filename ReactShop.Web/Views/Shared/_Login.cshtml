@@ -1,5 +1,10 @@
 ﻿@using ReactShop.Core.Common
 
+@if (Identity.IsAdminMode())
+{
+    <div>ADMIN MODE</div>
+}
+
 @if (!Identity.IsLoggedIn())
 {
 
