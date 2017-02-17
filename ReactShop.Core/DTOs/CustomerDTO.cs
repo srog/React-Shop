@@ -5,6 +5,8 @@ namespace ReactShop.Core.DTOs
     public class CustomerDTO
     {
         public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
         public string Title { get; set; }
         public string ForeName { get; set; }
         public string Surname { get; set; }
@@ -25,6 +27,8 @@ namespace ReactShop.Core.DTOs
             return new CustomerDTO
             {
                 Id = customer.Id,
+                Username = customer.Username,
+                Password = customer.Password,
                 ForeName = customer.ForeName,
                 Surname = customer.Surname,
                 Address1 = customer.Address1,

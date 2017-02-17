@@ -33,14 +33,7 @@ namespace ReactShop.Core
                 Status = oi.Status,
                 OrderId = oi.OrderId
             });
-            //var cartItems = orderItems.Select(oi => new CartItemDTO
-            //    {
-            //        Description = oi.Description,
-            //        ProductId = oi.ProductId,
-            //        Price = oi.Price,
-            //        Quantity = oi.Quantity
-            //    }).ToList();
-
+   
             return new CheckoutSummaryDTO
             {
                 OrderNumber = newOrderId.ToString(),

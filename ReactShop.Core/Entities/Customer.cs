@@ -7,7 +7,8 @@ namespace ReactShop.Core.Entities
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
+        public string Username { get; set; }
+        public string Password { get; set; }
         public string Title { get; set; }
         public string ForeName { get; set; }
         public string Surname { get; set; }

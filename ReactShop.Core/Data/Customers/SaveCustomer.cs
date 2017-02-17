@@ -14,6 +14,8 @@ namespace ReactShop.Core.Data.Customers
                 {
                     db.Customer.Add(new Customer
                     {
+                        Username = customerDto.Username,
+                        Password = customerDto.Password,
                         Title = customerDto.Title,
                         ForeName = customerDto.ForeName,
                         Surname = customerDto.Surname,

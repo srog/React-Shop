@@ -3,7 +3,7 @@
 <div>
     @using (Html.BeginForm("Login", "User"))
     {
-        <table class="table-striped" id="loginpopuptable">
+        <table class="table-bordered navbar-inverse" id="loginpopuptable">
             @*<tr id="heading">
             <td colspan="2" style="width: 60%; color: white; font-weight: bold; vertical-align: top; align-content: right">
                 <a href="javascript:void(0)" onclick="hidePopup();">Close</a>
@@ -16,9 +16,20 @@
                 </td>
                 <td>
                     
-                    <input type="text" id="txtUsername" name="customerId"/>
+                    <input type="text" id="txtUsername" name="txtusername"/>
                 </td>
             </tr>
+            
+            <tr>
+                <td>
+                    Password
+                </td>
+                <td>
+
+                    <input type="text" id="txtPassword" name="txtpassword" />
+                </td>
+            </tr>
+
             <tr>
                 <td>
                     @Html.Label(" ", new {id = "lblError"})

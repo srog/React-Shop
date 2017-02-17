@@ -16,6 +16,8 @@ namespace ReactShop.Core.Data.Customers
                         new CustomerDTO
                         {
                             Id = i.Id,
+                            Username = i.Username,
+                            Password = i.Password,
                             Title = i.Title,
                             ForeName = i.ForeName,
                             Surname = i.Surname,
@@ -34,6 +36,14 @@ namespace ReactShop.Core.Data.Customers
             using (var db = new Context())
             {
                 return db.Customer.FirstOrDefault(c => c.Id == id);
+            }
+        }
+
+        public Customer GetByUsernameAndPassword(string username, string password)
+        {
+            using (var db = new Context())
+            {
+                return db.Customer.FirstOrDefault(c => c.Username == username && c.Password == password);
             }
         }
     }
