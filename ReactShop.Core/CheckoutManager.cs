@@ -1,34 +1,53 @@
-﻿using ReactShop.Core.DTOs;
-using ReactShop.Core.Data.Cart;
+﻿using System.Linq;
+using ReactShop.Core.DTOs;
 using ReactShop.Core.Data.Customers;
+using ReactShop.Core.Data.Orders;
 
 namespace ReactShop.Core
 {
     public class CheckoutManager : ICheckoutManager
     {
-        private readonly IGetCart _getCart;
+        private readonly IGetOrders _getOrder;
+        private readonly IGetOrderItems _getOrderItems;
         private readonly IGetCustomer _getCustomer;
         private string serverFilePath;
      
         public CheckoutManager(string serverFilePath)
         {
             this.serverFilePath = serverFilePath;
-            _getCart = AutoFacHelper.Resolve<IGetCart>();
+            _getOrder = AutoFacHelper.Resolve<IGetOrders>();
+            _getOrderItems = AutoFacHelper.Resolve<IGetOrderItems>();
             _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
         }
         
-        public CheckoutSummaryDTO GetCheckoutSummary()
+        public CheckoutSummaryDTO GetCheckoutSummary(int newOrderId)
         {
-            var cart = _getCart.Get(Common.Identity.LoggedInUserId);
-            var customer = _getCustomer.GetById(Common.Identity.LoggedInUserId);
+            var order = _getOrder.GetById(newOrderId);
+            var customer = _getCustomer.GetById(order.CustomerId);
+            var orderItems = _getOrderItems.Get(newOrderId).Select(oi => new OrderItemDTO()
+            {
+                Quantity = oi.Quantity,
+                Description = oi.Description,
+                Price = oi.Price,
+                ProductId = oi.ProductId,
+                Status = oi.Status,
+                OrderId = oi.OrderId
+            });
+            //var cartItems = orderItems.Select(oi => new CartItemDTO
+            //    {
+            //        Description = oi.Description,
+            //        ProductId = oi.ProductId,
+            //        Price = oi.Price,
+            //        Quantity = oi.Quantity
+            //    }).ToList();
 
             return new CheckoutSummaryDTO
             {
-                OrderNumber = "123456789",
+                OrderNumber = newOrderId.ToString(),
                 DeliveryUpToNWorkingDays = 4,
-                Total = cart.Total,
+                Total = order.TotalPrice,
                 CustomerInfo = CustomerDTO.FromCustomer(customer),
-                CartItems = cart.CartItems
+                OrderItems = orderItems
             };
         }
       

@@ -31,10 +31,11 @@ namespace ReactShop.Core.Data.Orders
                             Price = item.Price,
                             ProductId = item.ProductId,
                             OrderId = newOrder.Id, 
+                            Quantity = item.Quantity,
                             Status = 1
                         });
                     }
-                    result = db.SaveChanges();
+                    db.SaveChanges();
 
                     // remove the cart items!
                     foreach (var cartItemDto in cart.CartItems)
@@ -46,6 +47,8 @@ namespace ReactShop.Core.Data.Orders
 
                     db.SaveChanges();
                     transaction.Commit();
+
+                    result = newOrder.Id;
                 }
             }
             return result;

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Configuration;
-using ReactShop.Core.Data.Customers;
+﻿using ReactShop.Core.Data.Customers;
 using ReactShop.Core.DTOs;
 
 namespace ReactShop.Core.Common

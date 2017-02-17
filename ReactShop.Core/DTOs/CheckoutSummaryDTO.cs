@@ -20,6 +20,6 @@ namespace ReactShop.Core.DTOs
         }
 
         public CustomerDTO CustomerInfo { get; set; }
-        public List<CartItemDTO> CartItems { get; set; }
+        public IEnumerable<OrderItemDTO> OrderItems { get; set; }
     }
 }

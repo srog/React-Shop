@@ -50,8 +50,8 @@ namespace ReactShop.Web.Controllers
 
         public ActionResult CheckoutSuccess()
         {
-            _createOrder.Create(_getCart.Get(Identity.LoggedInUserId));
-            return View(_checkoutManager.GetCheckoutSummary());
+            var orderId =_createOrder.Create(_getCart.Get(Identity.LoggedInUserId));
+            return View(_checkoutManager.GetCheckoutSummary(orderId));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -60,7 +60,7 @@ namespace ReactShop.Web.Controllers
         {
             var product = _getProducts.GetBySku(sku);
             var cartList = _getCart.Get(Identity.LoggedInUserId);
-            var existingcartItemDTO = cartList.CartItems.FirstOrDefault(ci => ci.Id == product.Id);
+            var existingcartItemDTO = cartList.CartItems.FirstOrDefault(ci => ci.ProductId == product.Id);
             if (existingcartItemDTO != null)
             {
                 var cartItem = _getCartItem.GetById(existingcartItemDTO.Id);
@@ -71,7 +71,7 @@ namespace ReactShop.Web.Controllers
             {
                 _saveCart.Save(new CartItem
                 {
-                    CustomerId = Core.Common.Identity.LoggedInUserId,
+                    CustomerId = Identity.LoggedInUserId,
                     Quantity = 1,
                     ProductId = product.Id
                 });
