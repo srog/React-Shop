@@ -23,15 +23,12 @@ namespace ReactShop.Core.Common
         {
             return CurrentUserId > 0;
         }
-
-        public static void Login()
+        
+        public static bool Login(string username, string password)
         {
-            CurrentUserId = 1;
-        }
-
-        public static void Login(string customerId)
-        {
-            CurrentUserId = int.Parse(customerId);
+            var customer = _getCustomer.GetByUsernameAndPassword(username, password);
+            CurrentUserId = customer?.Id ?? 0;
+            return customer != null;
         }
 
         public static void Logout()

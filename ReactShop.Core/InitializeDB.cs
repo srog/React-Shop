@@ -90,6 +90,8 @@ namespace ReactShop.Core
                 db.Customer.Add(new Customer
                 {
                     Id = 1,
+                    Username = "testuser",
+                    Password = "password1",
                     Title = "Mr",
                     ForeName = "John",
                     Surname = "Doe",
