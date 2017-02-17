@@ -8,9 +8,11 @@ namespace ReactShop.Core.Common
         private static readonly IGetCustomer _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
         private static readonly IConfigManager _configManager = AutoFacHelper.Resolve<IConfigManager>();
 
-        private static int CurrentUserId = _configManager.GetValue("AdminMode") == "true" ? 1: 0;
+        private static int CurrentUserId = IsAdminMode() ? 1: 0;
 
         public static int LoggedInUserId => CurrentUserId;
+
+        public static bool IsAdminMode() => _configManager.GetValue("AdminMode") == "true";
 
         public static string IdentityName()
         {
