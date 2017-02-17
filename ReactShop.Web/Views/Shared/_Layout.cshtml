@@ -1,5 +1,6 @@
 ﻿@using System.Web.Optimization
 @using ReactShop.Core.Common
+@using ReactShop.Core.Data.Cart
 
 <!DOCTYPE html>
 <html>
@@ -35,8 +36,9 @@
                 <li>
                     <a href="@Url.Action("Cart", "Home")">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
-                        Cart
+                        Cart   (@GetCartItem.GetCartCount())
                     </a>
+                    
                 </li>
             }
             </ul>

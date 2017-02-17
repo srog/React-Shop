@@ -75,7 +75,7 @@
                             <p><b className="float-right">Quantity</b></p>
                         </Column>
                     </Row>
-                    { this.props.model.CartItems.map(item =>
+                    { this.props.model.OrderItems.map(item =>
                         <Row className="gray">
                             <Column md={6}>
                                 <div className="offset30 truncate">

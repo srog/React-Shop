@@ -4,6 +4,6 @@ namespace ReactShop.Core
 {
     public interface ICheckoutManager
     {
-        CheckoutSummaryDTO GetCheckoutSummary();
+        CheckoutSummaryDTO GetCheckoutSummary(int newOrderId);
     }
 }
