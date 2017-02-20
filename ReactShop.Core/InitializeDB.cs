@@ -60,7 +60,36 @@ namespace ReactShop.Core
                     "Alpaca|alpaca1|999|2",
                     "Sheep|sheep1|1499|2",
                     "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+                    "Sheep|sheep1|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+                    "Sheep|sheep2|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+                    "Sheep|sheep1|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+
+                    "Sheep|sheep1|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+                    "Sheep|sheep2|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+                    "Sheep|sheep1|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+                    "Sheep|sheep1|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+                    "Sheep|sheep2|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
+                    "Alpaca|alpaca1|999|2",
+                    "Sheep|sheep1|1499|2",
+                    "Guitar Birthday Card|guitarcard|299|1",
                     "Alpaca|alpaca1|999|2"
+
 
                 };
 
