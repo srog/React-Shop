@@ -1,4 +1,5 @@
 ﻿using System;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Core.DTOs
 {
@@ -7,7 +8,7 @@ namespace ReactShop.Core.DTOs
         public int Id { get; set; }
         public DateTime DatePlaced { get; set; }
         public int CustomerId { get; set; }
-        public int Status { get; set; }
+        public OrderStatusEnum Status { get; set; }
         public decimal TotalPrice { get; set; }
     }
 }

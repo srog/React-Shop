@@ -6,6 +6,7 @@ using ReactShop.Core.Data.Cart;
 using ReactShop.Core.Data.Orders;
 using ReactShop.Core.Data.Products;
 using ReactShop.Core.Entities;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Web.Controllers
 {
@@ -42,7 +43,7 @@ namespace ReactShop.Web.Controllers
         public ActionResult SearchBar(string searchText)
         {
             var results = _getProducts.Get()
-                .Where(p => p.Description.ToLower().Contains(searchText.ToLower()))
+                .Where(p => p.Description.ToLower().Contains(searchText.ToLower()) && p.Status == ProductStatusEnum.Live)
                 .ToList();
 
             return View("Index", results);

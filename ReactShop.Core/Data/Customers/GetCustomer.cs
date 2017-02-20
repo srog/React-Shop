@@ -26,7 +26,8 @@ namespace ReactShop.Core.Data.Customers
                             Address3 = i.Address3,
                             Postcode = i.Postcode,
                             Email = i.Email,
-                            Telephone = i.Telephone
+                            Telephone = i.Telephone,
+                            Status = i.Status
                         }).ToList();
             }
         }

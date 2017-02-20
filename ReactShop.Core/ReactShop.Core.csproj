@@ -102,6 +102,9 @@
     <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\CartItem.cs" />
+    <Compile Include="Enums\CustomerStatusEnum.cs" />
+    <Compile Include="Enums\OrderStatusEnum.cs" />
+    <Compile Include="Enums\ProductStatusEnum.cs" />
     <Compile Include="ICheckoutManager.cs" />
     <Compile Include="IDiscountManager.cs" />
     <Compile Include="IInitializeDB.cs" />

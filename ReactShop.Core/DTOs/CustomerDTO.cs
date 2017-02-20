@@ -1,4 +1,5 @@
 ﻿using ReactShop.Core.Entities;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Core.DTOs
 {
@@ -17,6 +18,7 @@ namespace ReactShop.Core.DTOs
         public string Postcode { get; set; }
         public string Telephone { get; set; }
         public string Email { get; set; }
+        public CustomerStatusEnum Status { get; set; }
 
         public string DisplayName
         {
@@ -38,7 +40,8 @@ namespace ReactShop.Core.DTOs
                 Postcode = customer.Postcode,
                 Title = customer.Title,
                 Email = customer.Email,
-                Telephone = customer.Telephone
+                Telephone = customer.Telephone,
+                Status = customer.Status
             };
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using ReactShop.Core.DTOs;
 using ReactShop.Core.Entities;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Core.Data.Orders
 {
@@ -17,7 +18,7 @@ namespace ReactShop.Core.Data.Orders
                     {
                         CustomerId = cart.CustomerId,
                         DatePlaced = DateTime.Now,
-                        Status = 1, 
+                        Status = OrderStatusEnum.Booked, 
                         TotalPrice = cart.Total
                     });
 
@@ -32,7 +33,7 @@ namespace ReactShop.Core.Data.Orders
                             ProductId = item.ProductId,
                             OrderId = newOrder.Id, 
                             Quantity = item.Quantity,
-                            Status = 1
+                            Status = OrderStatusEnum.Booked
                         });
                     }
                     db.SaveChanges();
