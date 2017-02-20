@@ -1,0 +1,73 @@
+﻿@using System.Web.Optimization
+@model List<ReactShop.Core.DTOs.ProductDTO>
+
+@{
+    ViewBag.Title = "View Products";
+}
+
+@Scripts.Render(" ~/bundles/js")
+
+@Html.ReactInitJavaScript()
+
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Admin - View Products
+                </h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div>
+
+    <table class="table table-striped">
+        <tr class="media-heading">
+            <td>
+                Product ID
+            </td>
+            <td>
+                Description
+            </td>
+            <td>
+                SKU
+            </td>
+            <td>
+                Category
+            </td>
+            <td>
+                Price
+            </td>
+            <td>
+                Status
+            </td>
+        </tr>
+
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>
+                    @product.Id
+                </td>
+                <td>
+                    @product.Description
+                </td>
+                <td>
+                    @product.SKU
+                </td>
+                <td>
+                    @product.CategoryId.ToString();
+                </td>
+                <td>
+                    @product.Price
+                </td>
+                <td>
+                    @product.Status.ToString()
+                </td>
+            </tr>
+        }
+    </table>
+</div>

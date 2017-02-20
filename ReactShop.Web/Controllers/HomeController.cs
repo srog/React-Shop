@@ -32,7 +32,7 @@ namespace ReactShop.Web.Controllers
         
         public ActionResult Index()
         {
-            return View(_getProducts.Get());
+            return View(_getProducts.GetAll());
         }
 
         public ActionResult Cart()
@@ -42,7 +42,7 @@ namespace ReactShop.Web.Controllers
 
         public ActionResult SearchBar(string searchText)
         {
-            var results = _getProducts.Get()
+            var results = _getProducts.GetAll()
                 .Where(p => p.Description.ToLower().Contains(searchText.ToLower()) && p.Status == ProductStatusEnum.Live)
                 .ToList();
 

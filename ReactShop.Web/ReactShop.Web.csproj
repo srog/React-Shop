@@ -295,6 +295,7 @@
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\NewProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -322,6 +323,10 @@
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Shared\LoginPopup.cshtml" />
     <Content Include="Views\User\CreateAccount.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ViewOrders.cshtml" />
+    <Content Include="Views\Admin\ViewCustomers.cshtml" />
+    <Content Include="Views\Admin\ViewProducts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

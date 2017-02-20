@@ -89,9 +89,8 @@ namespace ReactShop.Core
                     index++;
                 }
                 
-                db.Customer.Add(new Customer(1, "testuser", "password1", "Mr", "John", "Doe", "(11) 555-12345",
-                    "johndoe@email.com",
-                    "503-250 Ferrand Drive", "Toronto Ontario", "Canada", "M3C 3G8", CustomerStatusEnum.Active));
+                db.Customer.Add(new Customer(1, "testuser", "password1", "Mr", "John", "Doe",
+                    "503-250 Ferrand Drive", "Toronto Ontario", "Canada", "M3C 3G8", "(11) 555-12345", "johndoe@email.com", CustomerStatusEnum.Active));
 
                 db.SaveChanges();
 
