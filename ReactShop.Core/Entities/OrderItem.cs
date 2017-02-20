@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Core.Entities
 {
@@ -8,7 +9,7 @@ namespace ReactShop.Core.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int OrderId { get; set; }
-        public int Status { get; set; }
+        public OrderStatusEnum Status { get; set; }
         public int ProductId { get; set; }
         public decimal Price { get; set; }
         public string Description { get; set; }

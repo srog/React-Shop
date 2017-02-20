@@ -3,6 +3,7 @@ using ReactShop.Core;
 using ReactShop.Core.Common;
 using ReactShop.Core.Data.Customers;
 using ReactShop.Core.DTOs;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Web.Controllers
 {
@@ -65,7 +66,8 @@ namespace ReactShop.Web.Controllers
                     Surname = cust.Surname,
                     Title = cust.Title,
                     Username = cust.Username,
-                    Password = cust.Password
+                    Password = cust.Password,
+                    Status = CustomerStatusEnum.Active
                 });
 
                 return RedirectToAction("Index", "Home");

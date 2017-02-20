@@ -12,20 +12,7 @@ namespace ReactShop.Core.Data.Customers
             {
                 using (var transaction = db.Database.BeginTransaction())
                 {
-                    var newCustomer = db.Customer.Add(new Customer
-                    {
-                        Username = customerDto.Username,
-                        Password = customerDto.Password,
-                        Title = customerDto.Title,
-                        ForeName = customerDto.ForeName,
-                        Surname = customerDto.Surname,
-                        Email = customerDto.Email,
-                        Telephone = customerDto.Telephone,
-                        Address1 = customerDto.Address1,
-                        Address2 = customerDto.Address2,
-                        Address3 = customerDto.Address3,
-                        Postcode = customerDto.Postcode
-                    });
+                    var newCustomer = db.Customer.Add(Customer.FromDto(customerDto));
 
                     db.SaveChanges();
                     transaction.Commit();

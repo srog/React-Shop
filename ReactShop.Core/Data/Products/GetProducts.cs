@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ReactShop.Core.DTOs;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Core.Data.Products
 {
@@ -18,8 +19,9 @@ namespace ReactShop.Core.Data.Products
                     CategoryId = p.CategoryId,
                     SmallImagePath = p.SmallImagePath,
                     LargeImagePath = p.LargeImagePath,
-                    Price = p.Price
-                }).ToList();
+                    Price = p.Price,
+                    Status = p.Status
+                }).Where(p => p.Status == ProductStatusEnum.Live).ToList();
             }
         }
 
@@ -34,7 +36,8 @@ namespace ReactShop.Core.Data.Products
                 SmallImagePath = product.SmallImagePath,
                 LargeImagePath = product.LargeImagePath,
                 Id = product.Id,
-                Price = product.Price
+                Price = product.Price,
+                Status = product.Status
             };
         }
 
@@ -49,7 +52,8 @@ namespace ReactShop.Core.Data.Products
                 SmallImagePath = product.SmallImagePath,
                 LargeImagePath = product.LargeImagePath,
                 Id = product.Id,
-                Price = product.Price
+                Price = product.Price,
+                Status = product.Status
             };
         }
     }

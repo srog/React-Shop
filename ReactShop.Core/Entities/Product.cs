@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Core.Entities
 {
@@ -11,7 +12,7 @@ namespace ReactShop.Core.Entities
         }
 
         public Product(int id, string sku, int categoryId, string description, string smallImagePath, string largeImagePath,
-            decimal price)
+            decimal price, ProductStatusEnum status)
         {
             Id = id;
             SKU = sku;
@@ -20,6 +21,7 @@ namespace ReactShop.Core.Entities
             SmallImagePath = smallImagePath;
             LargeImagePath = largeImagePath;
             Price = price;
+            Status = status;
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -30,6 +32,7 @@ namespace ReactShop.Core.Entities
         public string SmallImagePath { get; set; }
         public string LargeImagePath { get; set; }
         public decimal Price { get; set; }
+        public ProductStatusEnum Status { get; set; }
     }
 
 

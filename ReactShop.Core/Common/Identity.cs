@@ -1,5 +1,8 @@
-﻿using ReactShop.Core.Data.Customers;
+﻿using System.Linq;
+using ReactShop.Core.Data.Customers;
 using ReactShop.Core.DTOs;
+using ReactShop.Core.Entities;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Core.Common
 {
@@ -7,34 +10,37 @@ namespace ReactShop.Core.Common
     {
         private static readonly IGetCustomer _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
         private static readonly IConfigManager _configManager = AutoFacHelper.Resolve<IConfigManager>();
+        
+        private static Customer currentCustomer = 
+            IsAdminMode() ? Customer.FromDto(_getCustomer.GetAll().FirstOrDefault()) : null;
 
-        private static int CurrentUserId = IsAdminMode() ? 1: 0;
-
-        public static int LoggedInUserId => CurrentUserId;
+        public static int LoggedInUserId => currentCustomer?.Id ?? 0;
 
         public static bool IsAdminMode() => _configManager.GetValue("AdminMode") == "true";
 
         public static string IdentityName()
         {
-            return CurrentUserId == 0 ? "" : CustomerDTO.FromCustomer(_getCustomer.GetById(CurrentUserId)).DisplayName;
+            return currentCustomer == null ? "" : CustomerDTO.FromCustomer(currentCustomer).DisplayName;
         }
 
         public static bool IsLoggedIn()
         {
-            return CurrentUserId > 0;
+            return currentCustomer != null;
         }
         
         public static bool Login(string username, string password)
         {
-            var customer = _getCustomer.GetByUsernameAndPassword(username, password);
-            CurrentUserId = customer?.Id ?? 0;
-            return customer != null;
+            currentCustomer = _getCustomer.GetByUsernameAndPassword(username, password);
+            if (!IsLoggedIn() || currentCustomer.Status != CustomerStatusEnum.Active)
+            {
+                return false;
+            }
+            return true;
         }
 
         public static void Logout()
         {
-            CurrentUserId = 0; 
+            currentCustomer = null; 
         }
-
     }
 }

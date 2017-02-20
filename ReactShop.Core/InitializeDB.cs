@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using ReactShop.Core.Entities;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Core
 {
@@ -80,28 +81,17 @@ namespace ReactShop.Core
                             LargeImagePath = string.Format("Images/Products/{0}.jpg", filename),
                             Description = description,
                             CategoryId = category,
-                            Price = price
+                            Price = price,
+                            Status = ProductStatusEnum.Live
                         });
 
                     
                     index++;
                 }
-
-                db.Customer.Add(new Customer
-                {
-                    Id = 1,
-                    Username = "testuser",
-                    Password = "password1",
-                    Title = "Mr",
-                    ForeName = "John",
-                    Surname = "Doe",
-                    Telephone = "(11) 555-12345",
-                    Email = "johndoe@email.com",
-                    Address1 = "503-250 Ferrand Drive",
-                    Address2 = "Toronto Ontario",
-                    Address3 = "Canada",
-                    Postcode = "M3C 3G8"
-                });
+                
+                db.Customer.Add(new Customer(1, "testuser", "password1", "Mr", "John", "Doe", "(11) 555-12345",
+                    "johndoe@email.com",
+                    "503-250 Ferrand Drive", "Toronto Ontario", "Canada", "M3C 3G8", CustomerStatusEnum.Active));
 
                 db.SaveChanges();
 

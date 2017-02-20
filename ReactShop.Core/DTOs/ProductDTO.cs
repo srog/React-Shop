@@ -1,4 +1,5 @@
 ﻿using ReactShop.Core.Entities;
+using ReactShop.Core.Enums;
 
 namespace ReactShop.Core.DTOs
 {
@@ -11,6 +12,7 @@ namespace ReactShop.Core.DTOs
         public string SmallImagePath { get; set; }
         public string LargeImagePath { get; set; }
         public decimal Price { get; set; }
+        public ProductStatusEnum Status { get; set; }
 
 
         public static explicit operator Product(ProductDTO dto)
@@ -20,7 +22,7 @@ namespace ReactShop.Core.DTOs
 
         public Product ToProduct()
         {
-            return new Product(Id, SKU, CategoryId, Description, SmallImagePath, LargeImagePath, Price);
+            return new Product(Id, SKU, CategoryId, Description, SmallImagePath, LargeImagePath, Price, Status);
         }
     }
 }
