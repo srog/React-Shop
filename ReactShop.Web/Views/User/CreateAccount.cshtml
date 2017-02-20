@@ -1,0 +1,127 @@
+﻿@using System.Web.Optimization
+@model ReactShop.Core.DTOs.CustomerDTO
+
+@{
+    ViewBag.Title = "Create New Customer Account";
+}
+
+@Scripts.Render(" ~/bundles/js")
+
+@Html.ReactInitJavaScript()
+
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Create New Account
+                </h3>
+            </div>
+            
+        </div>
+    </div>
+
+        
+    <div class="row">
+        @using (Html.BeginForm("AddCustomerAccount", "User"))
+        {
+            <div>
+
+                @Html.AntiForgeryToken()
+                <table class="table-striped">
+                    <tr>
+                        <td>
+                            Title
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Forename
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.ForeName, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Surname
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Username
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control"})
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Password
+                        </td>
+                        <td>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Confirm Password
+                        </td>
+                        <td>
+                            @Html.PasswordFor(m => m.PasswordConfirm, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label id="passworderror" style="display:none"></label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Email
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Telephone
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Telephone, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    
+                </table>
+            </div>
+
+            <div>
+                <p class="btn-add">
+                    <button type="submit" class="btn btn-link" value="Create">
+                        <i class="fa glyphicon-user" aria-hidden="false"></i>
+                    Create 
+                    </button>
+                </p>
+
+            </div>
+        }
+    </div>
+</div>
+
+
+

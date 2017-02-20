@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using ReactShop.Core.DTOs;
 using ReactShop.Core.Data.Customers;
 using ReactShop.Core.Data.Orders;
@@ -36,7 +37,7 @@ namespace ReactShop.Core
    
             return new CheckoutSummaryDTO
             {
-                OrderNumber = newOrderId.ToString(),
+                OrderNumber = newOrderId.ToString("000000000"),
                 DeliveryUpToNWorkingDays = 4,
                 Total = order.TotalPrice,
                 CustomerInfo = CustomerDTO.FromCustomer(customer),

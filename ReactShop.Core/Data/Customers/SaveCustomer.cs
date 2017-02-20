@@ -12,7 +12,7 @@ namespace ReactShop.Core.Data.Customers
             {
                 using (var transaction = db.Database.BeginTransaction())
                 {
-                    db.Customer.Add(new Customer
+                    var newCustomer = db.Customer.Add(new Customer
                     {
                         Username = customerDto.Username,
                         Password = customerDto.Password,
@@ -27,8 +27,10 @@ namespace ReactShop.Core.Data.Customers
                         Postcode = customerDto.Postcode
                     });
 
-                    result = db.SaveChanges();
+                    db.SaveChanges();
                     transaction.Commit();
+
+                    result = newCustomer.Id;
                 }
 
             }

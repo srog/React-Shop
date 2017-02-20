@@ -46,5 +46,13 @@ namespace ReactShop.Core.Data.Customers
                 return db.Customer.FirstOrDefault(c => c.Username == username && c.Password == password);
             }
         }
+
+        public bool UsernameExists(string username)
+        {
+            using (var db = new Context())
+            {
+                return db.Customer.Any(c => c.Username == username);
+            }
+        }
     }
 }

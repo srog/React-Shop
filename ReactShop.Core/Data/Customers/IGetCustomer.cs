@@ -9,5 +9,6 @@ namespace ReactShop.Core.Data.Customers
         IEnumerable<CustomerDTO> GetAll();
         Customer GetById(int id);
         Customer GetByUsernameAndPassword(string username, string password);
+        bool UsernameExists(string username);
     }
 }
