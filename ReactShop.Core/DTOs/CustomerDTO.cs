@@ -7,6 +7,7 @@ namespace ReactShop.Core.DTOs
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string PasswordConfirm { get; set; }
         public string Title { get; set; }
         public string ForeName { get; set; }
         public string Surname { get; set; }

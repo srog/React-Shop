@@ -74,4 +74,14 @@ function openPopup() {
     $("#loginpopup").dialog("open");
 }
 
-
+//DOES NOT WORK !!!
+$("#PasswordConfirm").change(function () {
+    if ($('#PasswordConfirm').val() === $('#Password').val()) {
+        document.getElementById('passworderror').value = '';
+        $('#passworderror').style = 'display:none';
+    }
+    else {
+        document.getElementById('passworderror').value = 'Password does not match';
+        $('#passworderror').style = 'display:auto';
+    }
+});
