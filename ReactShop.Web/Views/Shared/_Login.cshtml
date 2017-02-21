@@ -2,7 +2,12 @@
 
 @if (Identity.IsAdminMode())
 {
-    <div>ADMIN MODE</div>
+    <div class="warning">***ADMIN MODE***</div>
+}
+<p></p>
+@if (Identity.IsTestMode())
+{
+    <div class="warning">*****TEST MODE*****</div>
 }
 
 @if (!Identity.IsLoggedIn())

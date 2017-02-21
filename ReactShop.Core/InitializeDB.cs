@@ -119,7 +119,7 @@ namespace ReactShop.Core
                 }
                 
                 db.Customer.Add(new Customer(1, "testuser", "password1", "Mr", "John", "Doe",
-                    "(11) 555-12345", "johndoe@email.com", CustomerStatusEnum.Active));
+                    "(11) 555-12345", "johndoe@email.com", CustomerStatusEnum.Active, true));
 
                 db.SaveChanges();
 
