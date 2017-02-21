@@ -5,7 +5,7 @@ namespace ReactShop.Core.Data.Orders
 {
     public interface IGetOrders
     {
-        IEnumerable<OrderDTO> Get();
+        IEnumerable<OrderDTO> GetAll();
         OrderDTO GetById(int id);
         IEnumerable<OrderDTO> GetByCustomer(int customerId);
     }

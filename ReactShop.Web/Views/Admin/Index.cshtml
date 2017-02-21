@@ -1,0 +1,48 @@
+﻿@using System.Web.Optimization
+
+@{
+    ViewBag.Title = "Admin Site";
+}
+
+@Scripts.Render(" ~/bundles/js")
+
+@Html.ReactInitJavaScript()
+
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Admin Site
+                </h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div>
+
+    <table class="table-bordered table">
+        <tr>
+            <td>
+                @Html.ActionLink("Orders", "ViewOrders")
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                @Html.ActionLink("Customers", "ViewCustomers")
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                @Html.ActionLink("Products", "ViewProducts")
+            </td>
+        </tr>
+
+
+    </table>
+
+</div>

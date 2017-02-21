@@ -7,7 +7,7 @@ namespace ReactShop.Core.Data.Products
 {
     public class GetProducts : IGetProducts
     {
-        public List<ProductDTO> Get()
+        public List<ProductDTO> GetAll()
         {
             using (var db = new Context())
             {
@@ -27,7 +27,7 @@ namespace ReactShop.Core.Data.Products
 
         public ProductDTO GetBySku(string sku)
         {
-            var product = Get().FirstOrDefault(p => p.SKU == sku);
+            var product = GetAll().FirstOrDefault(p => p.SKU == sku);
             return product == null ? null : new ProductDTO
             {
                 SKU = product.SKU,
@@ -43,7 +43,7 @@ namespace ReactShop.Core.Data.Products
 
         public ProductDTO GetById(int id)
         {
-            var product = Get().FirstOrDefault(p => p.Id == id);
+            var product = GetAll().FirstOrDefault(p => p.Id == id);
             return product == null ? null : new ProductDTO
             {
                 SKU = product.SKU,

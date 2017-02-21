@@ -41,7 +41,18 @@
                     
                 </li>
             }
-            </ul>
+            
+            @if (Identity.IsAdminMode())
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Admin")">
+                        <span class="glyphicon glyphicon-console"></span>
+                        Admin Site
+                    </a>
+                </li>
+            }
+
+        </ul>
 
         </div>
         <div>

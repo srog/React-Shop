@@ -6,7 +6,7 @@ namespace ReactShop.Core.Data.Orders
 {
     public class GetOrders : IGetOrders
     {
-        public IEnumerable<OrderDTO> Get()
+        public IEnumerable<OrderDTO> GetAll()
         {
             using (var db = new Context())
             {
@@ -23,12 +23,12 @@ namespace ReactShop.Core.Data.Orders
 
         public OrderDTO GetById(int id)
         {
-            return Get().FirstOrDefault(o => o.Id == id);
+            return GetAll().FirstOrDefault(o => o.Id == id);
         }
 
         public IEnumerable<OrderDTO> GetByCustomer(int customerId)
         {
-            return Get().Where(o => o.CustomerId == customerId).ToList();
+            return GetAll().Where(o => o.CustomerId == customerId).ToList();
         }
     }
 }

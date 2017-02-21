@@ -1,0 +1,80 @@
+﻿@using System.Web.Optimization
+@model List<ReactShop.Core.DTOs.CustomerDTO>
+
+@{
+    ViewBag.Title = "View Customers";
+}
+
+@Scripts.Render(" ~/bundles/js")
+
+@Html.ReactInitJavaScript()
+
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Admin - View Customers
+                </h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div>
+
+    <table class="table table-striped">
+        <tr class="media-heading">
+            <td>
+                Customer ID
+            </td>
+            <td>
+                User Name
+            </td>
+            <td>
+                Password
+            </td>
+            <td>
+                Display Name
+            </td>
+            <td>
+                Email
+            </td>
+            <td>
+                Telephone
+            </td>
+            <td>
+                Status
+            </td>
+        </tr>
+
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>
+                    @customer.Id
+                </td>
+                <td>
+                    @customer.Username
+                </td>
+                <td>
+                    @customer.Password
+                </td>
+                <td>
+                    @customer.DisplayName
+                </td>
+                <td>
+                    @customer.Email
+                </td>
+                <td>
+                    @customer.Telephone
+                </td>
+                <td>
+                    @customer.Status.ToString()
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
