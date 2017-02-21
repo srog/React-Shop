@@ -11,7 +11,7 @@ namespace ReactShop.Core.Entities
         {
         }
         public Customer(int id, string username, string password, string title, string forename, string surname,
-            string address1, string address2, string address3, string postcode, string telephone, string email, CustomerStatusEnum status)
+            string telephone, string email, CustomerStatusEnum status)
         {
             Id = id;
             Username = username;
@@ -19,10 +19,6 @@ namespace ReactShop.Core.Entities
             Title = title;
             ForeName = forename;
             Surname = surname;
-            Address1 = address1;
-            Address2 = address2;
-            Address3 = address3;
-            Postcode = postcode;
             Telephone = telephone;
             Email = email;
             Status = status;
@@ -35,10 +31,6 @@ namespace ReactShop.Core.Entities
         public string Title { get; set; }
         public string ForeName { get; set; }
         public string Surname { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string Address3 { get; set; }
-        public string Postcode { get; set; }
         public string Telephone { get; set; }
         public string Email { get; set; }
         public CustomerStatusEnum Status { get; set; }
@@ -46,7 +38,7 @@ namespace ReactShop.Core.Entities
         public static Customer FromDto(CustomerDTO dto)
         {
             return new Customer(dto.Id, dto.Username, dto.Password, dto.Title, dto.ForeName, dto.Surname, 
-                dto.Address1, dto.Address2, dto.Address3, dto.Postcode, dto.Telephone, dto.Email, dto.Status);
+                dto.Telephone, dto.Email, dto.Status);
         }
     }
 }

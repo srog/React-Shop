@@ -21,10 +21,6 @@ namespace ReactShop.Core.Data.Customers
                             Title = i.Title,
                             ForeName = i.ForeName,
                             Surname = i.Surname,
-                            Address1 = i.Address1,
-                            Address2 = i.Address2,
-                            Address3 = i.Address3,
-                            Postcode = i.Postcode,
                             Email = i.Email,
                             Telephone = i.Telephone,
                             Status = i.Status
@@ -53,6 +49,23 @@ namespace ReactShop.Core.Data.Customers
             using (var db = new Context())
             {
                 return db.Customer.Any(c => c.Username == username);
+            }
+        }
+
+        public IEnumerable<CustomerAddress> GetAddressesForCustomer(int customerId)
+        {
+            using (var db = new Context())
+            {
+                return db.CustomerAddress.Where(c => c.CustomerId == customerId).ToList();
+            }
+        }
+
+        public CustomerAddressDTO GetCustomerAddressById(int id)
+        {
+            using (var db = new Context())
+            {
+                var address = db.CustomerAddress.FirstOrDefault(c => c.Id == id);
+                return CustomerAddressDTO.FromCustomerAddress(address);
             }
         }
     }

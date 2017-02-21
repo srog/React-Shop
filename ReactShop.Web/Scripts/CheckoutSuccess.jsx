@@ -53,7 +53,7 @@
                         </Column>
                         <Column md={6}>
                             <h4><span className="fa fa-home leading-icon"></span>Shipping address</h4>
-                            <p className="offset30">{this.props.model.CustomerInfo.DeliveryAddress}</p>
+                            <p className="offset30">{this.props.model.DeliveryAddress.DisplayAddress}</p>
                         </Column>
                     </Row>
                     <Row className="gray">

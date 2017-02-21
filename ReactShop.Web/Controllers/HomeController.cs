@@ -15,7 +15,7 @@ namespace ReactShop.Web.Controllers
         private readonly IGetProducts _getProducts;
         private readonly IGetCart _getCart;
         private readonly IGetCartItem _getCartItem;
-        private readonly ISaveCart _saveCart;
+        private readonly ISaveCartItem _saveCartItem;
         private readonly ICreateOrder _createOrder;
         private readonly ICheckoutManager _checkoutManager;
 
@@ -24,7 +24,7 @@ namespace ReactShop.Web.Controllers
             _getProducts = AutoFacHelper.Resolve<IGetProducts>();
             _getCart = AutoFacHelper.Resolve<IGetCart>();
             _getCartItem = AutoFacHelper.Resolve<IGetCartItem>();
-            _saveCart = AutoFacHelper.Resolve<ISaveCart>();
+            _saveCartItem = AutoFacHelper.Resolve<ISaveCartItem>();
 
             _createOrder = AutoFacHelper.Resolve<ICreateOrder>();
             _checkoutManager = AutoFacHelper.Resolve<ICheckoutManager>();
@@ -52,7 +52,9 @@ namespace ReactShop.Web.Controllers
         public ActionResult CheckoutSuccess()
         {
             var orderId =_createOrder.Create(_getCart.Get(Identity.LoggedInUserId));
-            return View(_checkoutManager.GetCheckoutSummary(orderId));
+            var checkout = _checkoutManager.GetCheckoutSummary(orderId);
+
+            return View(checkout);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -66,11 +68,11 @@ namespace ReactShop.Web.Controllers
             {
                 var cartItem = _getCartItem.GetById(existingcartItemDTO.Id);
                 cartItem.Quantity++;
-                _saveCart.Save(cartItem);
+                _saveCartItem.Save(cartItem);
             }
             else
             {
-                _saveCart.Save(new CartItem
+                _saveCartItem.Save(new CartItem
                 {
                     CustomerId = Identity.LoggedInUserId,
                     Quantity = 1,
