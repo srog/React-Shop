@@ -11,12 +11,12 @@ namespace ReactShop.Web.WebApi
     public class CartController : ApiController
     {
         private readonly IGetCart _getCart;
-        private readonly ISaveCart _saveCart;
+        private readonly ISaveCartItem _saveCart;
 
         public CartController()
         {
             _getCart = AutoFacHelper.Resolve<IGetCart>();
-            _saveCart = AutoFacHelper.Resolve<ISaveCart>();
+            _saveCart = AutoFacHelper.Resolve<ISaveCartItem>();
         }
 
         // POST: api/Cart
@@ -25,7 +25,7 @@ namespace ReactShop.Web.WebApi
         public CartDTO Post([FromBody]CartItemDTO value)
         {
             var cart = _getCart.Get(Identity.LoggedInUserId);
-            var cartItemDTO = cart.CartItems.SingleOrDefault(i => i.SKU == value.SKU);
+            var cartItemDTO = cart.CartItems.FirstOrDefault(i => i.SKU == value.SKU);
             if (cartItemDTO != null)
             {
                 cartItemDTO.Quantity = value.Quantity;

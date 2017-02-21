@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ReactShop.Core.Data.Customers;
 using ReactShop.Core.Data.Products;
 using ReactShop.Core.DTOs;
 
@@ -9,11 +10,13 @@ namespace ReactShop.Core.Data.Cart
     {
         private readonly IGetCartItem _getCartItem;
         private readonly IGetProducts _getProduct;
+        private readonly IGetCustomer _getCustomer;
 
         public GetCart()
         {
             _getCartItem = AutoFacHelper.Resolve<IGetCartItem>();
             _getProduct = AutoFacHelper.Resolve<IGetProducts>();
+            _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
         }
         public CartDTO Get(int customerId)
         {
@@ -50,7 +53,8 @@ namespace ReactShop.Core.Data.Cart
                 DiscountValue = discountValue,
                 Total = total,
                 CustomerId = customerId,
-                CartItems = cartItemDTOList
+                CartItems = cartItemDTOList,
+                DeliveryAddressId = _getCustomer.GetAddressesForCustomer(customerId).FirstOrDefault().Id
             };
         }
     }

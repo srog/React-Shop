@@ -19,7 +19,8 @@ namespace ReactShop.Core.Data.Orders
                         CustomerId = cart.CustomerId,
                         DatePlaced = DateTime.Now,
                         Status = OrderStatusEnum.Booked, 
-                        TotalPrice = cart.Total
+                        TotalPrice = cart.Total,
+                        DeliveryAddressId = cart.DeliveryAddressId
                     });
 
                     db.SaveChanges();

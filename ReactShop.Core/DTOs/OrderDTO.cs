@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using ReactShop.Core.Data.Customers;
 using ReactShop.Core.Enums;
 
@@ -18,7 +17,7 @@ namespace ReactShop.Core.DTOs
         public int CustomerId { get; set; }
         public OrderStatusEnum Status { get; set; }
         public decimal TotalPrice { get; set; }
-
+        public int DeliveryAddressId { get; set; }
         public string CustomerName
         {
             get

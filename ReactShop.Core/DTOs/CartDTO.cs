@@ -9,6 +9,7 @@ namespace ReactShop.Core.DTOs
         public decimal DiscountValue { get; set; }
         public decimal Total { get; set; }
         public int CustomerId { get; set; }
+        public int DeliveryAddressId { get; set; }
 
         public List<CartItemDTO> CartItems { get; set; }
     }

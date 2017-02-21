@@ -2,7 +2,7 @@
 
 namespace ReactShop.Core.Data.Cart
 {
-    public interface ISaveCart
+    public interface ISaveCartItem
     {
         void Save(CartItem cartItem);
         void Remove(CartItem cartItem);

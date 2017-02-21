@@ -13,6 +13,7 @@ namespace ReactShop.Core.Entities
         public int CustomerId { get; set; }
         public OrderStatusEnum Status { get; set; }
         public decimal TotalPrice { get; set; }
+        public int DeliveryAddressId { get; set; }
         
     }
 }

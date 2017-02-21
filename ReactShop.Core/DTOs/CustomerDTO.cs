@@ -12,10 +12,6 @@ namespace ReactShop.Core.DTOs
         public string Title { get; set; }
         public string ForeName { get; set; }
         public string Surname { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string Address3 { get; set; }
-        public string Postcode { get; set; }
         public string Telephone { get; set; }
         public string Email { get; set; }
         public CustomerStatusEnum Status { get; set; }
@@ -34,10 +30,6 @@ namespace ReactShop.Core.DTOs
                 Password = customer.Password,
                 ForeName = customer.ForeName,
                 Surname = customer.Surname,
-                Address1 = customer.Address1,
-                Address2 = customer.Address2,
-                Address3 = customer.Address3,
-                Postcode = customer.Postcode,
                 Title = customer.Title,
                 Email = customer.Email,
                 Telephone = customer.Telephone,

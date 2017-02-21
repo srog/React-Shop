@@ -23,11 +23,11 @@ namespace ReactShop.Core
             builder.RegisterType<GetProducts>().As<IGetProducts>();
             builder.RegisterType<GetCart>().As<IGetCart>();
             builder.RegisterType<GetCartItem>().As<IGetCartItem>();
-            builder.RegisterType<SaveCart>().As<ISaveCart>();
+            builder.RegisterType<SaveCartItem>().As<ISaveCartItem>();
             builder.RegisterType<CreateOrder>().As<ICreateOrder>();
             builder.RegisterType<GetOrders>().As<IGetOrders>();
             builder.RegisterType<GetOrderItems>().As<IGetOrderItems>();
-            builder.RegisterType<SaveCart>().As<ISaveCart>();
+            builder.RegisterType<SaveCartItem>().As<ISaveCartItem>();
             builder.RegisterType<GetCustomer>().As<IGetCustomer>();
             builder.RegisterType<InitializeDB>().As<IInitializeDB>();
             builder.RegisterType<SaveCustomer>().As<ISaveCustomer>();

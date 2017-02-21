@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using ReactShop.Core.DTOs;
 using ReactShop.Core.Data.Customers;
 using ReactShop.Core.Data.Orders;
@@ -41,6 +40,7 @@ namespace ReactShop.Core
                 DeliveryUpToNWorkingDays = 4,
                 Total = order.TotalPrice,
                 CustomerInfo = CustomerDTO.FromCustomer(customer),
+                DeliveryAddress = _getCustomer.GetCustomerAddressById(order.DeliveryAddressId),
                 OrderItems = orderItems
             };
         }

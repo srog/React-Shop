@@ -3,7 +3,7 @@ using ReactShop.Core.Entities;
 
 namespace ReactShop.Core.Data.Cart
 {
-    public class SaveCart : ISaveCart
+    public class SaveCartItem : ISaveCartItem
     {
         public void Save(CartItem cartItem)
         {
