@@ -11,7 +11,7 @@ namespace ReactShop.Core.Entities
         {
         }
         public Customer(int id, string username, string password, string title, string forename, string surname,
-            string telephone, string email, CustomerStatusEnum status)
+            string telephone, string email, CustomerStatusEnum status, bool isAdmin)
         {
             Id = id;
             Username = username;
@@ -22,6 +22,7 @@ namespace ReactShop.Core.Entities
             Telephone = telephone;
             Email = email;
             Status = status;
+            IsAdmin = isAdmin;
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -34,11 +35,12 @@ namespace ReactShop.Core.Entities
         public string Telephone { get; set; }
         public string Email { get; set; }
         public CustomerStatusEnum Status { get; set; }
+        public bool IsAdmin { get; set; }
 
         public static Customer FromDto(CustomerDTO dto)
         {
             return new Customer(dto.Id, dto.Username, dto.Password, dto.Title, dto.ForeName, dto.Surname, 
-                dto.Telephone, dto.Email, dto.Status);
+                dto.Telephone, dto.Email, dto.Status, dto.IsAdmin);
         }
     }
 }

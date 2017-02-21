@@ -12,11 +12,12 @@ namespace ReactShop.Core.Common
         private static readonly IConfigManager _configManager = AutoFacHelper.Resolve<IConfigManager>();
         
         private static Customer currentCustomer = 
-            IsAdminMode() ? Customer.FromDto(_getCustomer.GetAll().FirstOrDefault()) : null;
+            IsTestMode() ? Customer.FromDto(_getCustomer.GetAll().FirstOrDefault()) : null;
 
         public static int LoggedInUserId => currentCustomer?.Id ?? 0;
 
-        public static bool IsAdminMode() => _configManager.GetValue("AdminMode") == "true";
+        public static bool IsTestMode() => _configManager.GetValue("TestMode") == "true";
+        public static bool IsAdminMode() => currentCustomer.IsAdmin;
 
         public static string IdentityName()
         {

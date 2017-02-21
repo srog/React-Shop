@@ -15,6 +15,7 @@ namespace ReactShop.Core.DTOs
         public string Telephone { get; set; }
         public string Email { get; set; }
         public CustomerStatusEnum Status { get; set; }
+        public bool IsAdmin { get; set; }
 
         public string DisplayName
         {
@@ -33,7 +34,8 @@ namespace ReactShop.Core.DTOs
                 Title = customer.Title,
                 Email = customer.Email,
                 Telephone = customer.Telephone,
-                Status = customer.Status
+                Status = customer.Status,
+                IsAdmin = customer.IsAdmin
             };
         }
 

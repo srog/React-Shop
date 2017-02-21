@@ -23,7 +23,8 @@ namespace ReactShop.Core.Data.Customers
                             Surname = i.Surname,
                             Email = i.Email,
                             Telephone = i.Telephone,
-                            Status = i.Status
+                            Status = i.Status,
+                            IsAdmin = i.IsAdmin
                         }).ToList();
             }
         }
