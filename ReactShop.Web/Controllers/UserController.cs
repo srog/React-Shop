@@ -3,6 +3,7 @@ using ReactShop.Core;
 using ReactShop.Core.Common;
 using ReactShop.Core.Data.Customers;
 using ReactShop.Core.DTOs;
+using ReactShop.Core.Entities;
 using ReactShop.Core.Enums;
 
 namespace ReactShop.Web.Controllers
@@ -11,11 +12,13 @@ namespace ReactShop.Web.Controllers
     {
         private readonly ISaveCustomer _saveCustomer;
         private readonly IGetCustomer _getCustomer;
+        private readonly IDeleteCustomerAddress _deleteCustomerAddress;
 
         public UserController()
         {
             _saveCustomer = AutoFacHelper.Resolve<ISaveCustomer>();
             _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
+            _deleteCustomerAddress = AutoFacHelper.Resolve<IDeleteCustomerAddress>();
         }
 
         // GET: User
@@ -67,7 +70,8 @@ namespace ReactShop.Web.Controllers
                     Title = cust.Title,
                     Username = cust.Username,
                     Password = cust.Password,
-                    Status = CustomerStatusEnum.Active
+                    Status = CustomerStatusEnum.Active,
+                    Addresses = null
                 });
 
                 return RedirectToAction("Index", "Home");
@@ -95,6 +99,33 @@ namespace ReactShop.Web.Controllers
 
             return true;
                 
+        }
+
+        public ActionResult ManageAccount()
+        {
+            var customer = _getCustomer.GetById(Identity.LoggedInUserId);
+
+            return View(CustomerDTO.FromCustomer(customer));
+        }
+
+        public ActionResult RemoveAddress(int addressid)
+        {
+            var address = CustomerAddress.FromDto(_getCustomer.GetCustomerAddressById(addressid));
+            var customerId = address.CustomerId;
+            _deleteCustomerAddress.Delete(address);
+
+            var customerDTO = CustomerDTO.FromCustomer(_getCustomer.GetById(customerId));
+            return View("ManageAccount", customerDTO);
+        }
+
+        public ActionResult AddAddress()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ActionResult EditAddress(int addressid)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

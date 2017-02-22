@@ -30,6 +30,8 @@ namespace ReactShop.Core.Entities
         public string Address4 { get; set; }
         public string Postcode { get; set; }
 
+        public string DisplayAddress => Address1 + "," + Address2 + "," + Address3 + "," + Address4 + "," + Postcode;
+
         public static CustomerAddress FromDto(CustomerAddressDTO dto)
         {
             return new CustomerAddress(dto.Id, dto.CustomerId,

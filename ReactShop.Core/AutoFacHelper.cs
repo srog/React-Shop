@@ -34,6 +34,7 @@ namespace ReactShop.Core
             builder.RegisterType<SaveProduct>().As<ISaveProduct>();
             builder.RegisterType<GetCategory>().As<IGetCategory>();
             builder.RegisterType<ConfigManager>().As<IConfigManager>();
+            builder.RegisterType<DeleteCustomerAddress>().As<IDeleteCustomerAddress>();
 
             container = builder.Build();
         }
