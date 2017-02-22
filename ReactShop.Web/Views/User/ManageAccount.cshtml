@@ -1,0 +1,125 @@
+﻿@using System.Web.Optimization
+@model ReactShop.Core.DTOs.CustomerDTO
+
+@{
+    ViewBag.Title = "Manage My Account";
+}
+
+@Scripts.Render(" ~/bundles/js")
+
+@Html.ReactInitJavaScript()
+
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Manage Account
+                </h3>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        @using (Html.BeginForm("ManageAccount", "User"))
+        {
+            <div>
+
+                @Html.AntiForgeryToken()
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            Title
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Forename
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.ForeName, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Surname
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            Email
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Telephone
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Telephone, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                </table>
+                    
+                <h4>Addresses</h4>
+                <table class="table table-striped">
+                    @foreach (var address in Model.Addresses)
+                    {
+                        <tr class="form-control">
+                            <td>
+                                @address.DisplayAddress
+                            </td>
+                            <td>
+                                @Html.ActionLink("Remove", "RemoveAddress", new { addressId = address.Id})
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditAddress", new { addressId = address.Id })
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.Addresses.Any())
+                    {
+                        <tr>
+                            <td colspan="3">
+                                No Addresses Found
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+                @Html.ActionLink("Add", "AddAddress")
+                
+               
+            </div>
+
+            <div>
+                <p class="btn-add">
+                    <button type="submit" class="btn btn-link" value="Create">
+                        <i class="fa glyphicon-user" aria-hidden="false"></i>
+                        Create
+                    </button>
+                </p>
+
+            </div>
+        }
+    </div>
+</div>
+
+
+

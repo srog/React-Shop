@@ -17,7 +17,7 @@ namespace ReactShop.Core.Common
         public static int LoggedInUserId => currentCustomer?.Id ?? 0;
 
         public static bool IsTestMode() => _configManager.GetValue("TestMode") == "true";
-        public static bool IsAdminMode() => currentCustomer.IsAdmin;
+        public static bool IsAdminMode() => currentCustomer?.IsAdmin ?? false;
 
         public static string IdentityName()
         {
@@ -41,7 +41,7 @@ namespace ReactShop.Core.Common
 
         public static void Logout()
         {
-            currentCustomer = null; 
+            currentCustomer = null;
         }
     }
 }

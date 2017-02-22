@@ -72,7 +72,9 @@
     <Compile Include="Data\Cart\SaveCartItem.cs" />
     <Compile Include="Data\Categories\GetCategory.cs" />
     <Compile Include="Data\Categories\IGetCategory.cs" />
+    <Compile Include="Data\Customers\DeleteCustomerAddress.cs" />
     <Compile Include="Data\Customers\GetCustomer.cs" />
+    <Compile Include="Data\Customers\IDeleteCustomerAddress.cs" />
     <Compile Include="Data\Customers\IGetCustomer.cs" />
     <Compile Include="Data\Customers\ISaveCustomer.cs" />
     <Compile Include="Data\Customers\SaveCustomer.cs" />

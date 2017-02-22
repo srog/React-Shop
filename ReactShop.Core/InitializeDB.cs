@@ -10,10 +10,11 @@ namespace ReactShop.Core
     public class InitializeDB : IInitializeDB
     {
         private readonly IGetProducts _getProduct;
-
+        private readonly IConfigManager _configManager;
         public InitializeDB()
         {
             _getProduct = AutoFacHelper.Resolve<IGetProducts>();
+            _configManager = AutoFacHelper.Resolve<IConfigManager>();
         }
         public Context Init()
         {
@@ -24,13 +25,16 @@ namespace ReactShop.Core
             // clear all data
             // populate with static data
             // if TestMode, populate with dummy orders and customer info
-                
-            ClearAllData(db);
-            AddStaticData(db);
 
-            if (Identity.IsTestMode())
+            if (_configManager.GetValue("RecreateData") == "true")
             {
-                AddDummyData(db);
+                ClearAllData(db);
+                AddStaticData(db);
+
+                if (Identity.IsTestMode())
+                {
+                    AddDummyData(db);
+                }
             }
 
             return db;
@@ -130,14 +134,33 @@ namespace ReactShop.Core
 
             // Default / Admin user
 
-            db.Customer.Add(new Customer(1, "adminuser", "password1", "Mr", "Test", "Admin",
-                  "(11) 555-12345", "testadmin@email.com", CustomerStatusEnum.Active, true));
+            var customer = new Customer()
+            {
+                Title = "Mr",
+                ForeName = "Test" ,
+                Surname = "Test",
+                Username = "adminuser",
+                Password = "pw",
+                Email = "test@test.com",
+                IsAdmin = true,
+                Status = CustomerStatusEnum.Active,
+                Telephone = "123123"
+            };
 
+            db.Customer.Add(customer);
             db.SaveChanges();
 
-            db.CustomerAddress.Add(new CustomerAddress(1, 1, "503-250 Ferrand Drive", "Toronto", "Ontario",
-                "Canada", "M3C 3G8"));
+            var customerAddress = new CustomerAddress()
+            {
+                CustomerId = customer.Id,
+                Address1 = "1 Test Street",
+                Address2 = "Admin Town",
+                Address3 = "Test City",
+                Address4 = "GB",
+                Postcode = "ABC 123"
+            };
 
+            db.CustomerAddress.Add(customerAddress);
             db.SaveChanges();
         }
 
