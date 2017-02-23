@@ -49,6 +49,12 @@ namespace ReactShop.Web.Controllers
             return View("Index", results);
         }
 
+        public ActionResult CheckoutConfirm()
+        {
+            var checkoutConfirmDetails = _checkoutManager.GetCheckoutConfirmDetails();
+            return View(checkoutConfirmDetails);
+        }
+
         public ActionResult CheckoutSuccess()
         {
             var orderId =_createOrder.Create(_getCart.Get(Identity.LoggedInUserId));
@@ -94,6 +100,8 @@ namespace ReactShop.Web.Controllers
         {
             return PartialView("LoginPopup");
         }
+
+        
     }
 }
 

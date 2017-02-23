@@ -215,7 +215,7 @@ class CartView extends React.Component {
                                 </a>
                             </Column>
                             <Column md={3} className="pull-right">
-                                <a href={this.props.urlCheckoutSuccess}>
+                                <a href={this.props.urlCheckoutConfirm}>
                                     <button type="button" className="btn btn-success pull-right">Proceed to checkout</button>
                                 </a>
                             </Column>
@@ -236,7 +236,7 @@ class CartView extends React.Component {
                                 </a>
                             </Column>
                             <Column md={3} className="pull-right">
-                                <a href={this.props.urlCheckoutSuccess}>
+                                <a href={this.props.urlCheckoutConfirm}>
                                     <button type="button" className="btn btn-success pull-right">Proceed to checkout</button>
                                 </a>
                             </Column>

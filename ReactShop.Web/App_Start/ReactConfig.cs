@@ -13,7 +13,9 @@ namespace ReactShop.Web
                 .AddScript("~/Scripts/react-bootstrap.js")
                 .AddScript("~/Scripts/Components.jsx")
                 .AddScript("~/Scripts/Cart.jsx")
+                .AddScript("~/Scripts/CheckoutConfirm.jsx")
                 .AddScript("~/Scripts/CheckoutSuccess.jsx");
+
         }
     }
 }

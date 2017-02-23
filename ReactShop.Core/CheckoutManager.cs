@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using ReactShop.Core.Common;
+using ReactShop.Core.Data.Cart;
 using ReactShop.Core.DTOs;
 using ReactShop.Core.Data.Customers;
 using ReactShop.Core.Data.Orders;
@@ -12,6 +14,7 @@ namespace ReactShop.Core
         private readonly IGetCustomer _getCustomer;
         private readonly IGetCustomerAddress _getCustomerAddress;
         private readonly IGetPaymentOption _getPaymentOption;
+        private readonly IGetCart _getCart;
         private string serverFilePath;
      
         public CheckoutManager(string serverFilePath)
@@ -22,8 +25,21 @@ namespace ReactShop.Core
             _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
             _getCustomerAddress = AutoFacHelper.Resolve<IGetCustomerAddress>();
             _getPaymentOption = AutoFacHelper.Resolve<IGetPaymentOption>();
+            _getCart = AutoFacHelper.Resolve<IGetCart>();
         }
-        
+
+        public CheckoutConfirmDetailsDTO GetCheckoutConfirmDetails()
+        {
+            var cart = _getCart.Get(Identity.LoggedInUserId);
+
+            return new CheckoutConfirmDetailsDTO
+            {
+                CustomerInfo = CustomerDTO.FromCustomer(_getCustomer.GetById(cart.CustomerId)),
+                CartItems = cart.CartItems,
+                Total = cart.Total
+            };
+        }
+
         public CheckoutSummaryDTO GetCheckoutSummary(int newOrderId)
         {
             var order = _getOrder.GetById(newOrderId);
