@@ -10,13 +10,15 @@ namespace ReactShop.Core.Data.Cart
     {
         private readonly IGetCartItem _getCartItem;
         private readonly IGetProducts _getProduct;
-        private readonly IGetCustomer _getCustomer;
+        private readonly IGetCustomerAddress _getCustomerAddress;
+        private readonly IGetPaymentOption _getPaymentOption;
 
         public GetCart()
         {
             _getCartItem = AutoFacHelper.Resolve<IGetCartItem>();
             _getProduct = AutoFacHelper.Resolve<IGetProducts>();
-            _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
+            _getCustomerAddress = AutoFacHelper.Resolve<IGetCustomerAddress>();
+            _getPaymentOption = AutoFacHelper.Resolve<IGetPaymentOption>();
         }
         public CartDTO Get(int customerId)
         {
@@ -54,7 +56,8 @@ namespace ReactShop.Core.Data.Cart
                 Total = total,
                 CustomerId = customerId,
                 CartItems = cartItemDTOList,
-                DeliveryAddressId = _getCustomer.GetAddressesForCustomer(customerId).FirstOrDefault().Id
+                DeliveryAddressId = _getCustomerAddress.GetAddressesForCustomer(customerId).FirstOrDefault().Id,
+                PaymentOptionId = _getPaymentOption.GetPaymentOptionsForCustomer(customerId).FirstOrDefault().Id
             };
         }
     }

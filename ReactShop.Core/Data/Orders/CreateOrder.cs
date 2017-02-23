@@ -20,7 +20,8 @@ namespace ReactShop.Core.Data.Orders
                         DatePlaced = DateTime.Now,
                         Status = OrderStatusEnum.Booked, 
                         TotalPrice = cart.Total,
-                        DeliveryAddressId = cart.DeliveryAddressId
+                        DeliveryAddressId = cart.DeliveryAddressId,
+                        PaymentOptionId = cart.PaymentOptionId
                     });
 
                     db.SaveChanges();

@@ -10,6 +10,8 @@ namespace ReactShop.Core
         private readonly IGetOrders _getOrder;
         private readonly IGetOrderItems _getOrderItems;
         private readonly IGetCustomer _getCustomer;
+        private readonly IGetCustomerAddress _getCustomerAddress;
+        private readonly IGetPaymentOption _getPaymentOption;
         private string serverFilePath;
      
         public CheckoutManager(string serverFilePath)
@@ -18,6 +20,8 @@ namespace ReactShop.Core
             _getOrder = AutoFacHelper.Resolve<IGetOrders>();
             _getOrderItems = AutoFacHelper.Resolve<IGetOrderItems>();
             _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
+            _getCustomerAddress = AutoFacHelper.Resolve<IGetCustomerAddress>();
+            _getPaymentOption = AutoFacHelper.Resolve<IGetPaymentOption>();
         }
         
         public CheckoutSummaryDTO GetCheckoutSummary(int newOrderId)
@@ -40,7 +44,8 @@ namespace ReactShop.Core
                 DeliveryUpToNWorkingDays = 4,
                 Total = order.TotalPrice,
                 CustomerInfo = CustomerDTO.FromCustomer(customer),
-                DeliveryAddress = _getCustomer.GetCustomerAddressById(order.DeliveryAddressId),
+                DeliveryAddress = _getCustomerAddress.GetCustomerAddressById(order.DeliveryAddressId),
+                PaymentOption = _getPaymentOption.GetPaymentOptionById(order.PaymentOptionId),
                 OrderItems = orderItems
             };
         }

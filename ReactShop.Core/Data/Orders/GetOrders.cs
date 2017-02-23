@@ -17,7 +17,8 @@ namespace ReactShop.Core.Data.Orders
                     TotalPrice = o.TotalPrice,
                     DatePlaced = o.DatePlaced,
                     Status = o.Status,
-                    DeliveryAddressId = o.DeliveryAddressId
+                    DeliveryAddressId = o.DeliveryAddressId,
+                    PaymentOptionId = o.PaymentOptionId
                 }).ToList();
             }
         }

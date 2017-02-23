@@ -74,8 +74,12 @@
     <Compile Include="Data\Categories\IGetCategory.cs" />
     <Compile Include="Data\Customers\DeleteCustomerAddress.cs" />
     <Compile Include="Data\Customers\GetCustomer.cs" />
+    <Compile Include="Data\Customers\GetCustomerAddress.cs" />
+    <Compile Include="Data\Customers\GetPaymentOption.cs" />
     <Compile Include="Data\Customers\IDeleteCustomerAddress.cs" />
     <Compile Include="Data\Customers\IGetCustomer.cs" />
+    <Compile Include="Data\Customers\IGetCustomerAddress.cs" />
+    <Compile Include="Data\Customers\IGetPaymentOption.cs" />
     <Compile Include="Data\Customers\ISaveCustomer.cs" />
     <Compile Include="Data\Customers\SaveCustomer.cs" />
     <Compile Include="Data\Orders\CreateOrder.cs" />
@@ -93,6 +97,7 @@
     <Compile Include="DTOs\CustomerAddressDTO.cs" />
     <Compile Include="DTOs\OrderDTO.cs" />
     <Compile Include="DTOs\OrderItemDTO.cs" />
+    <Compile Include="DTOs\PaymentOptionDTO.cs" />
     <Compile Include="DTOs\ProductDTO.cs" />
     <Compile Include="DTOs\CartItemDTO.cs" />
     <Compile Include="DTOs\CustomerDTO.cs" />
@@ -104,10 +109,13 @@
     <Compile Include="Entities\CustomerAddress.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
+    <Compile Include="Entities\PaymentOption.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\CartItem.cs" />
     <Compile Include="Enums\CustomerStatusEnum.cs" />
     <Compile Include="Enums\OrderStatusEnum.cs" />
+    <Compile Include="Enums\PaymentOptionStatusEnum.cs" />
+    <Compile Include="Enums\PaymentTypeEnum.cs" />
     <Compile Include="Enums\ProductStatusEnum.cs" />
     <Compile Include="ICheckoutManager.cs" />
     <Compile Include="IDiscountManager.cs" />

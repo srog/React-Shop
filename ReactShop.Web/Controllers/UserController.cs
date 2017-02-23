@@ -12,12 +12,14 @@ namespace ReactShop.Web.Controllers
     {
         private readonly ISaveCustomer _saveCustomer;
         private readonly IGetCustomer _getCustomer;
+        private readonly IGetCustomerAddress _getCustomerAddress;
         private readonly IDeleteCustomerAddress _deleteCustomerAddress;
 
         public UserController()
         {
             _saveCustomer = AutoFacHelper.Resolve<ISaveCustomer>();
             _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
+            _getCustomerAddress = AutoFacHelper.Resolve<IGetCustomerAddress>();
             _deleteCustomerAddress = AutoFacHelper.Resolve<IDeleteCustomerAddress>();
         }
 
@@ -110,7 +112,7 @@ namespace ReactShop.Web.Controllers
 
         public ActionResult RemoveAddress(int addressid)
         {
-            var address = CustomerAddress.FromDto(_getCustomer.GetCustomerAddressById(addressid));
+            var address = CustomerAddress.FromDto(_getCustomerAddress.GetCustomerAddressById(addressid));
             var customerId = address.CustomerId;
             _deleteCustomerAddress.Delete(address);
 

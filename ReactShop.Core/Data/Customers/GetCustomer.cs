@@ -52,22 +52,5 @@ namespace ReactShop.Core.Data.Customers
                 return db.Customer.Any(c => c.Username == username);
             }
         }
-
-        public IEnumerable<CustomerAddress> GetAddressesForCustomer(int customerId)
-        {
-            using (var db = new Context())
-            {
-                return db.CustomerAddress.Where(c => c.CustomerId == customerId).ToList();
-            }
-        }
-
-        public CustomerAddressDTO GetCustomerAddressById(int id)
-        {
-            using (var db = new Context())
-            {
-                var address = db.CustomerAddress.FirstOrDefault(c => c.Id == id);
-                return CustomerAddressDTO.FromCustomerAddress(address);
-            }
-        }
     }
 }

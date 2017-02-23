@@ -21,6 +21,7 @@ namespace ReactShop.Core.DTOs
 
         public CustomerDTO CustomerInfo { get; set; }
         public CustomerAddressDTO DeliveryAddress { get; set; }
+        public PaymentOptionDTO PaymentOption { get; set; }
         public IEnumerable<OrderItemDTO> OrderItems { get; set; }
     }
 }
