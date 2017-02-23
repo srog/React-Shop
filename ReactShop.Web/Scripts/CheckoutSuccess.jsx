@@ -36,24 +36,26 @@
                             <h4>Payment term</h4>
                             <div className="boleto">
                                 <p><i className="fa fa-paypal leading-icon" aria-hidden="true"></i> Paypal</p>
-                                <p className="offset30"><Dollars val={this.props.model.Total} /></p>
+                                <p className="offset60"><Dollars val={this.props.model.Total} /></p>
+                                <p className="offset60">Email: {this.props.model.PaymentOption.PaypalEmail} </p>  
                             </div>
                         </Column>
                     </Row>
                     <Row className="gray row-eq-height border-top border-bottom">
                         <Column md={3}>
                             <h4><span className="fa fa-user leading-icon"></span>Your info</h4>
-                            <p className="offset30">{this.props.model.CustomerInfo.CustomerName}</p>
-                            <p className="offset30">{this.props.model.CustomerInfo.PhoneNumber}</p>
+                            <p className="offset60">Name:  {this.props.model.CustomerInfo.DisplayName}</p>
+                            <p className="offset60">Tel: {this.props.model.CustomerInfo.Telephone}</p>
+                            <p className="offset60">E-mail: {this.props.model.CustomerInfo.Email}</p>
                         </Column>
                         <Column md={3} className="border-right">
                             <br />
                             <br />
-                            <p>{this.props.model.CustomerInfo.Email}</p>
+                            <p></p>
                         </Column>
                         <Column md={6}>
                             <h4><span className="fa fa-home leading-icon"></span>Shipping address</h4>
-                            <p className="offset30">{this.props.model.DeliveryAddress.DisplayAddress}</p>
+                            <p className="offset60">{this.props.model.DeliveryAddress.DisplayAddress}</p>
                         </Column>
                     </Row>
                     <Row className="gray">

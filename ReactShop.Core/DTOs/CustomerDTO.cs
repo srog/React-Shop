@@ -7,7 +7,7 @@ namespace ReactShop.Core.DTOs
 {
     public class CustomerDTO
     {
-        private static readonly IGetCustomer _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
+        private static readonly IGetCustomerAddress _getCustomerAddress = AutoFacHelper.Resolve<IGetCustomerAddress>();
 
         public int Id { get; set; }
         public string Username { get; set; }
@@ -42,7 +42,7 @@ namespace ReactShop.Core.DTOs
                 Telephone = customer.Telephone,
                 Status = customer.Status,
                 IsAdmin = customer.IsAdmin,
-                Addresses = _getCustomer.GetAddressesForCustomer(customer.Id)
+                Addresses = _getCustomerAddress.GetAddressesForCustomer(customer.Id)
             };
         }
 

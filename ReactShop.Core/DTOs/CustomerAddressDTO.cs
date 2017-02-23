@@ -12,7 +12,7 @@ namespace ReactShop.Core.DTOs
         public string Address4 { get; set; }
         public string Postcode { get; set; }
         
-        public string DisplayAddress => (Address1 + "," + Address2 + "," + Postcode);
+        public string DisplayAddress => (Address1 + "," + Address2 + "," + Address3 + "," + Address4 + "," + Postcode);
         
         public static CustomerAddressDTO FromCustomerAddress(CustomerAddress customerAddress)
         {

@@ -29,6 +29,8 @@ namespace ReactShop.Core
             builder.RegisterType<GetOrderItems>().As<IGetOrderItems>();
             builder.RegisterType<SaveCartItem>().As<ISaveCartItem>();
             builder.RegisterType<GetCustomer>().As<IGetCustomer>();
+            builder.RegisterType<GetCustomerAddress>().As<IGetCustomerAddress>();
+            builder.RegisterType<GetPaymentOption>().As<IGetPaymentOption>();
             builder.RegisterType<InitializeDB>().As<IInitializeDB>();
             builder.RegisterType<SaveCustomer>().As<ISaveCustomer>();
             builder.RegisterType<SaveProduct>().As<ISaveProduct>();

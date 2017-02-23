@@ -58,6 +58,10 @@ namespace ReactShop.Core
             {
                 db.CustomerAddress.Remove(row);
             }
+            foreach (var row in db.PaymentOption)
+            {
+                db.PaymentOption.Remove(row);
+            }
             foreach (var row in db.Customer)
             {
                 db.Customer.Remove(row);
@@ -161,6 +165,17 @@ namespace ReactShop.Core
             };
 
             db.CustomerAddress.Add(customerAddress);
+            db.SaveChanges();
+
+            var paymentOption = new PaymentOption
+            {
+                CustomerId = customer.Id,
+                PaymentType = PaymentTypeEnum.Paypal,
+                PaypalEmail = "testpaypal@test.com",
+                Status = PaymentOptionStatusEnum.Active
+            };
+
+            db.PaymentOption.Add(paymentOption);
             db.SaveChanges();
         }
 

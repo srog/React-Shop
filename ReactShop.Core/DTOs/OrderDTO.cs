@@ -18,13 +18,13 @@ namespace ReactShop.Core.DTOs
         public OrderStatusEnum Status { get; set; }
         public decimal TotalPrice { get; set; }
         public int DeliveryAddressId { get; set; }
+        public int PaymentOptionId { get; set; }
         public string CustomerName
         {
             get
             {
-                var customer = _getCustomers.GetById(CustomerId);
-                var displayName = customer.Title + ". " + customer.ForeName + " " + customer.Surname;
-                return displayName;
+                var customerDto = CustomerDTO.FromCustomer(_getCustomers.GetById(CustomerId));
+                return customerDto.DisplayName;
             } 
         }
     }
