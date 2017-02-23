@@ -19,6 +19,7 @@ namespace ReactShop.Web
                 "~/Scripts/react-bootstrap.js",
                 "~/Scripts/Components.jsx",
                 "~/Scripts/Cart.jsx",
+                "~/Scripts/CheckoutConfirm.jsx",
                 "~/Scripts/CheckoutSuccess.jsx",
                 "~/Scripts/showdown.js",
                 "~/Scripts/loginpopup.js"

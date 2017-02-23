@@ -1,5 +1,5 @@
 ﻿@using System.Web.Optimization
-@model ReactShop.Core.DTOs.CartDTO
+@model ReactShop.Core.DTOs.CheckoutConfirmDetailsDTO
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -17,15 +17,13 @@
     }
 }
 
-@Html.React("CartView", new
+@Html.React("CheckoutConfirmView", new
 {
     title = "React JS.Net + React-Bootstrap",
     model = Model,
     TokenHeaderValue = TokenHeaderValue(),
-    urlNewProduct = @Url.Action("Index", "Home" ),
-    urlCheckoutConfirm = @Url.Action("CheckoutConfirm", "Home")
+    urlCart = @Url.Action("Cart", "Home"),
+    urlCheckoutSuccess = @Url.Action("CheckoutSuccess", "Home")
 })
 
 @Scripts.Render(" ~/bundles/js")
-
-@Html.ReactInitJavaScript()

@@ -94,6 +94,7 @@
     <Compile Include="Data\Products\SaveProduct.cs" />
     <Compile Include="DiscountManager.cs" />
     <Compile Include="DTOs\CartDTO.cs" />
+    <Compile Include="DTOs\CheckoutConfirmDetailsDTO.cs" />
     <Compile Include="DTOs\CustomerAddressDTO.cs" />
     <Compile Include="DTOs\OrderDTO.cs" />
     <Compile Include="DTOs\OrderItemDTO.cs" />

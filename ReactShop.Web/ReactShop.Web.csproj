@@ -319,6 +319,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\CheckoutSuccess.cshtml" />
     <Content Include="Scripts\CheckoutSuccess.jsx" />
+    <Content Include="Scripts\CheckoutConfirm.jsx" />
     <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.0.min.map" />
     <Content Include="Views\Home\_Details.cshtml" />
@@ -330,6 +331,7 @@
     <Content Include="Views\Admin\ViewCustomers.cshtml" />
     <Content Include="Views\Admin\ViewProducts.cshtml" />
     <Content Include="Views\User\ManageAccount.cshtml" />
+    <Content Include="Views\Home\CheckoutConfirm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
