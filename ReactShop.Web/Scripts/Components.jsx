@@ -18,7 +18,7 @@ class Dollars extends React.Component {
             return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
         });
 
-        return (<span>${d}</span>);
+        return (<span>£{d}</span>);
         }
 }
 
