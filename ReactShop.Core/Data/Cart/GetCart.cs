@@ -47,6 +47,8 @@ namespace ReactShop.Core.Data.Cart
             var discountRule = DiscountManager.Instance.GetDiscount(subtotal);
             var discountValue = discountRule.CalculatedDiscount;
             var total = subtotal - discountValue;
+            var addresses = _getCustomerAddress.GetAddressesForCustomer(customerId);
+            var paymentOptions = _getPaymentOption.GetPaymentOptionsForCustomer(customerId);
 
             return new CartDTO
             {
@@ -56,8 +58,8 @@ namespace ReactShop.Core.Data.Cart
                 Total = total,
                 CustomerId = customerId,
                 CartItems = cartItemDTOList,
-                DeliveryAddressId = _getCustomerAddress.GetAddressesForCustomer(customerId).FirstOrDefault().Id,
-                PaymentOptionId = _getPaymentOption.GetPaymentOptionsForCustomer(customerId).FirstOrDefault().Id
+                DeliveryAddressId = addresses?.FirstOrDefault().Id ?? 0,
+                PaymentOptionId = paymentOptions?.FirstOrDefault().Id ?? 0
             };
         }
     }

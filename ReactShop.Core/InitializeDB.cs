@@ -94,15 +94,29 @@ namespace ReactShop.Core
             db.Category.Add(cat2);
             db.SaveChanges();
 
-            var products = new string[]
+            var productsother= new string[]
              {
-                    "Sheep|sheep1|1499",
+                    "Sheep Draught Excluder|sheep1|1499",
+                    "Exploding Box Card|explodingbox1|395",
+                    "Exploding Box Gift|explodingbox2|495",
+                    "Stuffed Alpaca|alpaca1|999",
+             };
+
+            var productscards = new string[]
+             {
                     "Guitar Birthday Card|guitarcard|299",
-                    "Alpaca|alpaca1|999",
+                    "Craft Birthday Card|birthdaycard1|299",
+                    "Birthday Card|card1|299",
+                    "Dinosaur Birthday Card|dinosaurcard|299",
+                    "Owl Birthday Card|owlcard1|299",
+                    "Pacman Birthday Card|pacmancard1|299",
+                    "Peppa Pig Birthday Card|peppacard|299",
+                    "Wedding Day Card|weddingcard|299",
+                    "Wedding Invitation|weddinginvitation1|199"
              };
 
             var index = 1;
-            foreach (var p in products)
+            foreach (var p in productscards)
             {
                 var productBits = p.Split('|');
                 var description = productBits[0];
@@ -120,6 +134,16 @@ namespace ReactShop.Core
                     Status = ProductStatusEnum.Live
                 });
 
+                index++;
+            }
+
+            foreach (var p in productsother)
+            {
+                var productBits = p.Split('|');
+                var description = productBits[0];
+                var filename = productBits[1];
+                var price = decimal.Parse(productBits[2]) / 100M;
+
                 db.Product.Add(new Product
                 {
                     SKU = Guid.NewGuid().ToString(),
@@ -133,6 +157,7 @@ namespace ReactShop.Core
 
                 index++;
             }
+
 
             db.SaveChanges();
 

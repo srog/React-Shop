@@ -86,7 +86,7 @@ namespace ReactShop.Web.Controllers
                 });
             }
 
-            return RedirectToAction("Cart", "Home");
+            return RedirectToAction("Index", "Home");
         }
         
         public PartialViewResult Details(string sku)

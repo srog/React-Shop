@@ -29,7 +29,9 @@ else
     <p class="nav navbar-text">
         Logged in as <strong>@Identity.IdentityName()</strong>
     </p>
-    @Html.ActionLink("My Account", "ManageAccount", "User")
+    <p>
+        @Html.ActionLink("My Account", "ManageAccount", "User")
+    </p>
     @Html.ActionLink("Logout", "logout", "user", routeValues: null, htmlAttributes: new { @class = "btn navbar-btn navbar-right btn-warning" })
 
 }
