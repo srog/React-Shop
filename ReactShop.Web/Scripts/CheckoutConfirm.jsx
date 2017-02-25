@@ -1,8 +1,35 @@
 ﻿class CheckoutConfirmView extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {};
+
+        this.state = {
+            CanCompleteOrder: false,
+            DeliveryAddressId: this.props.model.DeliveryAddressId
+        };
     }
-    render() {
+
+     UpdateDeliveryAddressId(event) {
+         if (event.target.value === this.state.DeliveryAddressId) {
+             this.setState({
+                 DeliveryAddressId: 0,
+                 CanCompleteOrder: false
+             });
+             event.target.checked = false;
+
+         } else {
+             this.setState({
+                 DeliveryAddressId: event.target.value,
+                 CanCompleteOrder: true
+             });
+             event.target.checked = true;
+         }
+     }
+
+
+
+render() {
         return (
             <div>
                 <br />
@@ -50,6 +77,50 @@
                     }
 
                 </Panel>
+
+                <br />
+
+                    <Row>
+                        <h3>
+                            Please select a delivery address
+                        </h3>
+                     </Row>
+
+                <Panel>
+                    <Row>
+                        <Column md={6}>
+                            <h4>Address</h4>
+                        </Column>
+                        <Column md={6}>
+                            <h5 className="float-right">Selected</h5>
+                        </Column>
+                    </Row>
+
+                    {
+                        this.props.model.CustomerInfo.Addresses.map(address =>
+                        <Row className="gray">
+                            <Column md={6}>
+                                <div className="offset30 truncate">
+                                {address.DisplayAddress}
+                                </div>
+                            </Column>
+
+                            <Column md={6} className="pull-right">
+                            <p>
+                                <div className="float-right" onChange={this.UpdateDeliveryAddressId.bind(this)}>
+                                    <input name="addressRadio"
+                                           type="radio" 
+                                           value={address.Id} 
+                                            />
+                                </div>
+                            </p>
+                            </Column>
+                        </Row>
+                        )
+                    }
+
+                </Panel>
+
                 <Row>
                     <Column md={3}>
                         <a href={this.props.urlCart}>
@@ -57,13 +128,16 @@
                         </a>
                     </Column>
                     <Column md={3} className="pull-right">
+                        
+                        {this.state.CanCompleteOrder === true ?
                         <a href={this.props.urlCheckoutSuccess}>
                             <button type="button" className="btn btn-success pull-right">Confirm and Place Order</button>
                         </a>
+                        : null
+                    }
+
                     </Column>
                 </Row>
-
-              
         </div>
 
             );

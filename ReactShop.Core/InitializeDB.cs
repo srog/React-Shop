@@ -192,6 +192,19 @@ namespace ReactShop.Core
             db.CustomerAddress.Add(customerAddress);
             db.SaveChanges();
 
+            var customerAddress2 = new CustomerAddress()
+            {
+                CustomerId = customer.Id,
+                Address1 = "2 Test Street",
+                Address2 = "Alt Town",
+                Address3 = "Alt City",
+                Address4 = "GB",
+                Postcode = "ALT 456"
+            };
+
+            db.CustomerAddress.Add(customerAddress2);
+            db.SaveChanges();
+
             var paymentOption = new PaymentOption
             {
                 CustomerId = customer.Id,
