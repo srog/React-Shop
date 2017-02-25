@@ -36,6 +36,7 @@ namespace ReactShop.Core
             {
                 CustomerInfo = CustomerDTO.FromCustomer(_getCustomer.GetById(cart.CustomerId)),
                 CartItems = cart.CartItems,
+                DeliveryAddressId = 0,
                 Total = cart.Total
             };
         }
