@@ -8,6 +8,7 @@ namespace ReactShop.Core.DTOs
     public class CustomerDTO
     {
         private static readonly IGetCustomerAddress _getCustomerAddress = AutoFacHelper.Resolve<IGetCustomerAddress>();
+        private static readonly IGetPaymentOption _getPaymentOptions = AutoFacHelper.Resolve<IGetPaymentOption>();
 
         public int Id { get; set; }
         public string Username { get; set; }
@@ -22,6 +23,7 @@ namespace ReactShop.Core.DTOs
         public bool IsAdmin { get; set; }
 
         public IEnumerable<CustomerAddress> Addresses { get; set; }
+        public IEnumerable<PaymentOption> PaymentOptions { get; set; }
 
         public string DisplayName
         {
@@ -42,7 +44,8 @@ namespace ReactShop.Core.DTOs
                 Telephone = customer.Telephone,
                 Status = customer.Status,
                 IsAdmin = customer.IsAdmin,
-                Addresses = _getCustomerAddress.GetAddressesForCustomer(customer.Id)
+                Addresses = _getCustomerAddress.GetAddressesForCustomer(customer.Id),
+                PaymentOptions = _getPaymentOptions.GetPaymentOptionsForCustomer(customer.Id)
             };
         }
 
