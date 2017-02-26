@@ -5,8 +5,10 @@
         this.state = {};
 
         this.state = {
-            CanCompleteOrder: false,
-            DeliveryAddressId: this.props.model.DeliveryAddressId
+            IsPaymentSelected: false,
+            IsAddressSelected: false,
+            DeliveryAddressId: this.props.model.DeliveryAddressId,
+            PaymentOptionId: this.props.model.PaymentOptionId
         };
     }
 
@@ -14,14 +16,32 @@
          if (event.target.value === this.state.DeliveryAddressId) {
              this.setState({
                  DeliveryAddressId: 0,
-                 CanCompleteOrder: false
+                 IsAddressSelected: false
              });
              event.target.checked = false;
 
          } else {
              this.setState({
                  DeliveryAddressId: event.target.value,
-                 CanCompleteOrder: true
+                 IsAddressSelected: true
+             });
+             event.target.checked = true;
+         }
+     }
+
+
+     UpdatePaymentOptionId(event) {
+         if (event.target.value === this.state.PaymentOptionId) {
+             this.setState({
+                 PaymentOptionId: 0,
+                 IsPaymentSelected: false
+             });
+             event.target.checked = false;
+
+         } else {
+             this.setState({
+                 PaymentOptionId: event.target.value,
+                 IsPaymentSelected: true
              });
              event.target.checked = true;
          }
@@ -122,6 +142,49 @@ render() {
                 </Panel>
 
                 <Row>
+                        <h3>
+                            Please select a payment option
+                        </h3>
+                </Row>
+
+                <Panel>
+                    <Row>
+                        <Column md={6}>
+                            <h4>PaymentOption</h4>
+                        </Column>
+                        <Column md={6}>
+                            <h5 className="float-right">Selected</h5>
+                        </Column>
+                    </Row>
+
+                    {
+                    this.props.model.CustomerInfo.PaymentOptions.map(paymentoption =>
+                        <Row className="gray">
+                            <Column md={6}>
+                                <div className="offset30 truncate">{paymentoption.PaypalEmail}
+                                </div>
+                            </Column>
+
+                            <Column md={6} className="pull-right">
+                            <p>
+                                <div className="float-right" onChange={this.UpdatePaymentOptionId.bind(this)}>
+                                    <input name="paymentRadio"
+                                           type="radio"
+                                           value={paymentoption.Id} />
+                                </div>
+                            </p>
+                            </Column>
+                        </Row>
+                    )
+                    }
+
+                </Panel>
+
+
+
+
+
+                <Row>
                     <Column md={3}>
                         <a href={this.props.urlCart}>
                             <button type="button" className="btn btn-success">Return to Cart Details</button>
@@ -129,7 +192,7 @@ render() {
                     </Column>
                     <Column md={3} className="pull-right">
                         
-                        {this.state.CanCompleteOrder === true ?
+                        {this.state.IsPaymentSelected === true && this.state.IsAddressSelected === true ?
                         <a href={this.props.urlCheckoutSuccess}>
                             <button type="button" className="btn btn-success pull-right">Confirm and Place Order</button>
                         </a>
