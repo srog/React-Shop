@@ -6,10 +6,10 @@ Testing e-c opportunities..
 * Database Project / separate InitDB 
 * Improve Search
 * List Items / Categories
-* Confirm Order page (select address, payment + confirm)
 * Menu - Left (Home, Products, Orders, Account)
 * Improve navbar menu
 * Paypal integration
+* Wishlist
 
 
 ## Ongoing work:
