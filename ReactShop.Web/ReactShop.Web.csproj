@@ -342,6 +342,9 @@
     <Content Include="Views\Admin\ViewProducts.cshtml" />
     <Content Include="Views\User\ManageAccount.cshtml" />
     <Content Include="Views\Home\CheckoutConfirm.cshtml" />
+    <Content Include="Views\Admin\_MenuHeader.cshtml" />
+    <Content Include="Views\Admin\_CustomerDetail.cshtml" />
+    <Content Include="Views\User\ManageOrders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

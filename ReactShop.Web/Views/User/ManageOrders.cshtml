@@ -1,0 +1,79 @@
+﻿@using System.Web.Optimization
+@model List<ReactShop.Core.DTOs.OrderDTO>
+
+@{
+    ViewBag.Title = "Manage My Orders";
+}
+
+@Scripts.Render(" ~/bundles/js")
+
+@Html.ReactInitJavaScript()
+
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Manage Orders
+                </h3>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        @using (Html.BeginForm("ManageOrders", "User"))
+        {
+            <div>
+
+                @Html.AntiForgeryToken()
+                <table class="table table-striped">
+                    
+                    <tr>
+                        <td>
+                            Date Created
+                        </td>
+                        <td>
+                            Status
+                        </td>
+                        <td>
+                            Delivery Address
+                        </td>
+                        <td>
+                            Payment Option
+                        </td>
+                        <td>
+                            Total Price
+                        </td>
+                    </tr>
+                    
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td>
+                                @order.DatePlaced
+                            </td>
+                            <td>
+                                @order.Status
+                            </td>
+                            <td>
+                                @order.DeliveryAddressId
+                            </td>
+                            <td>
+                                @order.PaymentOptionId
+                            </td>
+                            <td>
+                                @order.TotalPrice
+                            </td>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+        }
+    </div>
+</div>
+
+
+

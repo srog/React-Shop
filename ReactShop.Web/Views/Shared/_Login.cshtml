@@ -2,12 +2,12 @@
 
 @if (Identity.IsAdminMode())
 {
-    <div class="warning">***ADMIN MODE***</div>
+    <div class="pull-right">***ADMIN MODE***</div>
 }
 <p></p>
 @if (Identity.IsTestMode())
 {
-    <div class="warning">*****TEST MODE*****</div>
+    <div class="pull-right">*****TEST MODE*****</div>
 }
 
 @if (!Identity.IsLoggedIn())
@@ -22,18 +22,20 @@
 
     @Html.ActionLink("Create Account", "CreateAccount", "User");
 
-        
+
 }
 else
 {
-    <p class="nav navbar-text">
-        Logged in as <strong>@Identity.IdentityName()</strong>
-    </p>
-    <p>
-        @Html.ActionLink("My Account", "ManageAccount", "User")
-    </p>
-    @Html.ActionLink("Logout", "logout", "user", routeValues: null, htmlAttributes: new { @class = "btn navbar-btn navbar-right btn-warning" })
-
+    <div class="pull-right">
+        <p class="nav navbar-text">
+            Logged in as <strong>@Identity.IdentityName()</strong>
+        </p>
+        <p>
+            @Html.ActionLink("My Account", "ManageAccount", "User")
+        </p>
+        @Html.ActionLink("My Orders", "ManageOrders", "User")
+        @Html.ActionLink("Logout", "logout", "user", routeValues: null, htmlAttributes: new { @class = "btn navbar-btn navbar-right btn-warning" })
+    </div>
 }
 
 <div id="loginpopup" class="modal-dialog modal"></div>
