@@ -9,12 +9,14 @@
 
 @Html.ReactInitJavaScript()
 
+@Html.Partial("_MenuHeader")
+
 <div class="container">
     <div class="row">
         <div class="row">
             <div class="col-md-9">
                 <h3>
-                    Admin - View Products
+                    Products
                 </h3>
             </div>
 
@@ -59,10 +61,10 @@
                     @product.SKU
                 </td>
                 <td>
-                    @product.CategoryId.ToString();
+                    @product.CategoryName
                 </td>
                 <td>
-                    @product.Price
+                    £@product.Price
                 </td>
                 <td>
                     @product.Status.ToString()

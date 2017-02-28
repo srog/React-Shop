@@ -9,12 +9,15 @@
 
 @Html.ReactInitJavaScript()
 
+@Html.Partial("_MenuHeader")
+
+
 <div class="container">
     <div class="row">
         <div class="row">
             <div class="col-md-9">
                 <h3>
-                    Admin - View Customers
+                    Customers
                 </h3>
             </div>
 
@@ -76,8 +79,17 @@
                 <td>
                     @customer.Status.ToString()
                 </td>
+                <td>
+                <input type="button" class="toggledetails" value="Show Details" onclick="var showcustomerdetails = function(p) { throw new Error('Not implemented'); }" />
+                </td>
             </tr>
+            
         }
     </table>
+    
+   
+
+    
+    
 
 </div>

@@ -2,6 +2,7 @@
 using ReactShop.Core;
 using ReactShop.Core.Common;
 using ReactShop.Core.Data.Customers;
+using ReactShop.Core.Data.Orders;
 using ReactShop.Core.DTOs;
 using ReactShop.Core.Entities;
 using ReactShop.Core.Enums;
@@ -14,6 +15,7 @@ namespace ReactShop.Web.Controllers
         private readonly IGetCustomer _getCustomer;
         private readonly IGetCustomerAddress _getCustomerAddress;
         private readonly IDeleteCustomerAddress _deleteCustomerAddress;
+        private readonly IGetOrders _getOrders;
 
         public UserController()
         {
@@ -21,6 +23,7 @@ namespace ReactShop.Web.Controllers
             _getCustomer = AutoFacHelper.Resolve<IGetCustomer>();
             _getCustomerAddress = AutoFacHelper.Resolve<IGetCustomerAddress>();
             _deleteCustomerAddress = AutoFacHelper.Resolve<IDeleteCustomerAddress>();
+            _getOrders = AutoFacHelper.Resolve<IGetOrders>();
         }
 
         // GET: User
@@ -128,6 +131,12 @@ namespace ReactShop.Web.Controllers
         public ActionResult EditAddress(int addressid)
         {
             throw new System.NotImplementedException();
+        }
+
+        public ActionResult ManageOrders()
+        {
+            var orders = _getOrders.GetByCustomer(Identity.LoggedInUserId);
+            return View(orders);
         }
     }
 }
