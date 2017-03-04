@@ -8,8 +8,6 @@
 
 @Scripts.Render(" ~/bundles/js")
 
-@Html.ReactInitJavaScript()
-
     
     <div>
         <h2>
@@ -84,10 +82,6 @@
                                                             }
                                                             <p class="btn-details">
                                                                 <i class="fa fa-list"></i><a href="" class="hidden-sm"></a>
-                                                                <button type="button" id="detailsbutton">
-                                                                    Details
-                                                                </button>
-                                                                <div id="AddUserForm"></div>
                                                             </p>
                                                         </div>
                                                         <div class="clearfix">
@@ -107,44 +101,27 @@
                 </div>
 
             </div>
-
-       
-
+            
     }
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="" data-remote="/Home/Details/123123"
+               class="btn btn-block btn-link btn-sm" data-toggle="modal" data-target="#clientConfirmationModal">
+                Details
+            </a>
+        </li>
+    </ul>
+    
+    <div class="modal" id="clientConfirmationModal" tabindex="-1" role="dialog"
+         aria-labelledby="clientConfirmationModalLabel" aria-hidden="true">
+    </div>
 
 
 </div>
 
-@section Scripts
-{
-    <script type="text/javascript">
-        $("#detailsbutton")
-            .click(function() {
-
-                $("#AddUserForm")
-                    .dialog({
-                        autoOpen: true,
-                        position: { my: "center", at: "top+350", of: window },
-                        width: 1000,
-                        resizable: false,
-                        title: 'Details Form',
-                        modal: true,
-                        open: function() {
-                            $(this)
-                                .load('@Url.Action("Details", "Home", new {sku = "60e1f8ac-2350-484b-8871-0ea722184b92"})');
-                        },
-                        buttons: {
-                            Cancel: function() {
-                                $(this).dialog("close");
-                            }
-                        }
-                    });
-                return false;
-            });
-    </script>
 
 
-}
+
 
 
 
