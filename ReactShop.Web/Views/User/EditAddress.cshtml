@@ -1,0 +1,111 @@
+﻿@using System.Web.Optimization
+@model ReactShop.Core.DTOs.CustomerAddressDTO
+
+@{
+    ViewBag.Title = "Edit Address";
+}
+
+@Scripts.Render(" ~/bundles/js")
+
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Edit Address
+                </h3>
+            </div>
+
+        </div>
+    </div>
+    
+    
+
+    <div class="row">
+        @using (Html.BeginForm("SaveAddress", "User"))
+        {
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.CustomerId)
+            
+            <div>
+
+                @Html.AntiForgeryToken()
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            Address
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Address1, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                           
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Address2, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Address3, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Address4, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            Postcode
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Postcode, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            <div>
+                                <p class="btn-add">
+                                    <button type="button" class="btn btn-link" value="Cancel" onclick="location.href = 'ManageAccount';">
+                                        Cancel
+                                    </button>
+                                </p>
+                                <p>
+                                    <button type="submit" class="btn btn-link" value="Save">
+                                        Save
+                                    </button>
+                                </p>
+                            </div>
+
+                        </td>
+                    </tr>                  
+                </table>
+
+            </div>
+
+            <div>
+
+            </div>
+        }
+    </div>
+</div>
+
+
+

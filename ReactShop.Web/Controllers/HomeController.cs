@@ -89,10 +89,10 @@ namespace ReactShop.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
         
-        public PartialViewResult Details(string sku)
+        public ActionResult Details(int id)
         {
-            var productDetail = _getProducts.GetBySku(sku);
-            return PartialView("_Details", productDetail.ToProduct());
+            var productDetail = _getProducts.GetById(id);
+            return View("_Details", productDetail);
         }
 
         [HttpGet]

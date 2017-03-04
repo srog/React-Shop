@@ -7,8 +7,6 @@
 
 @Scripts.Render(" ~/bundles/js")
 
-@Html.ReactInitJavaScript()
-
 <div class="container">
     <div class="row">
         <div class="row">
@@ -76,8 +74,9 @@
                     </tr>
                 </table>
                     
-                <h4>Addresses</h4>
+                <h3>Addresses</h3>
                 <table class="table table-striped">
+                   
                     @foreach (var address in Model.Addresses)
                     {
                         <tr class="form-control">
@@ -92,6 +91,7 @@
                             </td>
                         </tr>
                     }
+
                     @if (!Model.Addresses.Any())
                     {
                         <tr>
@@ -103,19 +103,8 @@
 
                 </table>
 
-                @Html.ActionLink("Add", "AddAddress")
-                
+                @Html.ActionLink("Add New", "AddAddress")
                
-            </div>
-
-            <div>
-                <p class="btn-add">
-                    <button type="submit" class="btn btn-link" value="Create">
-                        <i class="fa glyphicon-user" aria-hidden="false"></i>
-                        Create
-                    </button>
-                </p>
-
             </div>
         }
     </div>

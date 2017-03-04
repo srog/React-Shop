@@ -1,26 +1,18 @@
-﻿@using System.Web.Optimization
-@model ReactShop.Core.Entities.Product
+﻿@model ReactShop.Core.DTOs.ProductDTO 
 
-@Scripts.Render(" ~/bundles/js")
-
-@Html.ReactInitJavaScript()
-
-<div id="AddUserForm" class="modal">
+@{
+    Layout = null;
+}
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title" id="myModalLabel">Product Details</h4>
-
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="clientConfirmationModalLabel">View Details</h4>
         </div>
-        <hr />
-        <dl class="dl-horizontal">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-
-        </dl>
+        <div>
+            TEST TEST TEST
+        </div>
     </div>
+</div>
+

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http.Controllers;
+using System.Web.Mvc;
 using ReactShop.Core;
 using ReactShop.Core.Common;
 using ReactShop.Core.Data.Customers;
@@ -16,6 +17,7 @@ namespace ReactShop.Web.Controllers
         private readonly IGetCustomerAddress _getCustomerAddress;
         private readonly IDeleteCustomerAddress _deleteCustomerAddress;
         private readonly IGetOrders _getOrders;
+        private readonly ISaveCustomerAddress _saveCustomerAddress;
 
         public UserController()
         {
@@ -24,6 +26,7 @@ namespace ReactShop.Web.Controllers
             _getCustomerAddress = AutoFacHelper.Resolve<IGetCustomerAddress>();
             _deleteCustomerAddress = AutoFacHelper.Resolve<IDeleteCustomerAddress>();
             _getOrders = AutoFacHelper.Resolve<IGetOrders>();
+            _saveCustomerAddress = AutoFacHelper.Resolve<ISaveCustomerAddress>();
         }
 
         // GET: User
@@ -128,9 +131,18 @@ namespace ReactShop.Web.Controllers
             throw new System.NotImplementedException();
         }
 
-        public ActionResult EditAddress(int addressid)
+        public ActionResult EditAddress(int addressId)
         {
-            throw new System.NotImplementedException();
+            var address = _getCustomerAddress.GetCustomerAddressById(addressId);
+
+            return View("EditAddress", address);
+        }
+
+        public ActionResult SaveAddress(CustomerAddressDTO address)
+        {
+            _saveCustomerAddress.Save(address);
+            var customer = CustomerDTO.FromCustomer(_getCustomer.GetById(address.CustomerId));
+            return View("ManageAccount", customer);
         }
 
         public ActionResult ManageOrders()
