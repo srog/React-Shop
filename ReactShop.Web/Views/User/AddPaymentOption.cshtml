@@ -1,0 +1,66 @@
+﻿@using System.Web.Optimization
+@model ReactShop.Core.DTOs.PaymentOptionDTO
+
+@{
+    ViewBag.Title = "Add New Payment Option";
+}
+
+@Scripts.Render(" ~/bundles/js")
+
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Add Payment Option
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        @using (Html.BeginForm("SavePaymentOption", "User"))
+        {
+            @Html.HiddenFor(m => m.CustomerId)
+            @Html.HiddenFor(m => m.PaymentType)
+
+            <div>
+
+                @Html.AntiForgeryToken()
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            Paypal Email Address
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.PaypalEmail, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div>
+                                <p class="btn-add">
+                                    <button type="button" class="btn btn-link" value="Cancel" onclick="location.href = 'ManageAccount';">
+                                        Cancel
+                                    </button>
+                                </p>
+                                <p>
+                                    <button type="submit" class="btn btn-link" value="Save">
+                                        Create
+                                    </button>
+                                </p>
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        }
+    </div>
+</div>
+
+
+
