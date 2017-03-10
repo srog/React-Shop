@@ -19,6 +19,7 @@ namespace ReactShop.Web.Controllers
         private readonly IGetOrders _getOrders;
         private readonly ISaveCustomerAddress _saveCustomerAddress;
         private readonly IDeletePaymentOption _deletePaymentOption;
+        private readonly ISavePaymentOption _savePaymentOption;
 
         public UserController()
         {
@@ -29,6 +30,7 @@ namespace ReactShop.Web.Controllers
             _getOrders = AutoFacHelper.Resolve<IGetOrders>();
             _saveCustomerAddress = AutoFacHelper.Resolve<ISaveCustomerAddress>();
             _deletePaymentOption = AutoFacHelper.Resolve<IDeletePaymentOption>();
+            _savePaymentOption = AutoFacHelper.Resolve<ISavePaymentOption>();
         }
 
         // GET: User
@@ -196,6 +198,38 @@ namespace ReactShop.Web.Controllers
         {
             _deletePaymentOption.Delete(paymentOptionId);
             return RedirectToAction("ManageAccount");
+        }
+
+        public ActionResult AddPaymentOption()
+        {
+            var newPaymentOption = new PaymentOptionDTO()
+            {
+                CustomerId = Identity.LoggedInUserId,
+                PaymentType = PaymentTypeEnum.Paypal,
+                Status = PaymentOptionStatusEnum.Active
+            };
+
+            return View("AddPaymentOption", newPaymentOption);
+        }
+
+        public ActionResult SavePaymentOption(PaymentOptionDTO paymentOption)
+        {
+            if (!ValidatePaymentOption(paymentOption))
+            {
+                return View("AddPaymentOption", paymentOption);
+            }
+            _savePaymentOption.Save(paymentOption);
+            var customer = CustomerDTO.FromCustomer(_getCustomer.GetById(paymentOption.CustomerId));
+            return View("ManageAccount", customer);
+        }
+
+        private bool ValidatePaymentOption(PaymentOptionDTO paymentOptionDto)
+        {
+            if (string.IsNullOrEmpty(paymentOptionDto.PaypalEmail))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

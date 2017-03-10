@@ -84,8 +84,10 @@
     <Compile Include="Data\Customers\IGetPaymentOption.cs" />
     <Compile Include="Data\Customers\ISaveCustomer.cs" />
     <Compile Include="Data\Customers\ISaveCustomerAddress.cs" />
+    <Compile Include="Data\Customers\ISavePaymentOption.cs" />
     <Compile Include="Data\Customers\SaveCustomer.cs" />
     <Compile Include="Data\Customers\SaveCustomerAddress.cs" />
+    <Compile Include="Data\Customers\SavePaymentOption.cs" />
     <Compile Include="Data\Orders\CreateOrder.cs" />
     <Compile Include="Data\Orders\GetOrderItems.cs" />
     <Compile Include="Data\Orders\GetOrders.cs" />

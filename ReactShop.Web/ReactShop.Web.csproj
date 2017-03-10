@@ -346,6 +346,7 @@
     <Content Include="Views\Admin\_CustomerDetail.cshtml" />
     <Content Include="Views\User\ManageOrders.cshtml" />
     <Content Include="Views\User\AddAddress.cshtml" />
+    <Content Include="Views\User\AddPaymentOption.cshtml" />
     <None Include="Views\User\EditAddress.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
