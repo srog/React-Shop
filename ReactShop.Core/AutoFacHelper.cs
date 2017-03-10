@@ -38,6 +38,7 @@ namespace ReactShop.Core
             builder.RegisterType<ConfigManager>().As<IConfigManager>();
             builder.RegisterType<DeleteCustomerAddress>().As<IDeleteCustomerAddress>();
             builder.RegisterType<SaveCustomerAddress>().As<ISaveCustomerAddress>();
+            builder.RegisterType<DeletePaymentOption>().As<IDeletePaymentOption>();
 
             container = builder.Build();
         }
