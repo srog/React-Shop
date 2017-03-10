@@ -18,6 +18,7 @@ namespace ReactShop.Web.Controllers
         private readonly IDeleteCustomerAddress _deleteCustomerAddress;
         private readonly IGetOrders _getOrders;
         private readonly ISaveCustomerAddress _saveCustomerAddress;
+        private readonly IDeletePaymentOption _deletePaymentOption;
 
         public UserController()
         {
@@ -27,6 +28,7 @@ namespace ReactShop.Web.Controllers
             _deleteCustomerAddress = AutoFacHelper.Resolve<IDeleteCustomerAddress>();
             _getOrders = AutoFacHelper.Resolve<IGetOrders>();
             _saveCustomerAddress = AutoFacHelper.Resolve<ISaveCustomerAddress>();
+            _deletePaymentOption = AutoFacHelper.Resolve<IDeletePaymentOption>();
         }
 
         // GET: User
@@ -162,6 +164,12 @@ namespace ReactShop.Web.Controllers
         {
             var orders = _getOrders.GetByCustomer(Identity.LoggedInUserId);
             return View(orders);
+        }
+
+        public ActionResult RemovePaymentOption(int paymentOptionId)
+        {
+            _deletePaymentOption.Delete(paymentOptionId);
+            return RedirectToAction("ManageAccount");
         }
     }
 }

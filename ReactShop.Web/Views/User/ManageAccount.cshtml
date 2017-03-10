@@ -109,6 +109,40 @@
                 </table>
 
                 @Html.ActionLink("Add New", "AddAddress")
+                
+                
+                <h3>Payment Options</h3>
+                <table class="table table-striped">
+
+                    @foreach (var payment in Model.PaymentOptions)
+                    {
+                        <tr class="form-control">
+                            <td>
+                                Paypal Email:
+                            </td>
+                            <td>
+                                @payment.PaypalEmail
+                            </td>
+                            <td>
+                                @Html.ActionLink("Remove", "RemovePaymentOption", new { paymentOptionId = payment.Id })
+                            </td>
+                        </tr>
+                    }
+
+                    @if (!Model.PaymentOptions.Any())
+                    {
+                        <tr>
+                            <td colspan="3">
+                                No Payment Options Found
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+                @Html.ActionLink("Add New", "AddPaymentOption")
+                
+
                
             </div>
         }
