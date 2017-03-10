@@ -143,7 +143,12 @@ namespace ReactShop.Web.Controllers
 
         public ActionResult AddAddress()
         {
-            throw new System.NotImplementedException();
+            var newAddress = new CustomerAddressDTO()
+            {
+                CustomerId = Identity.LoggedInUserId
+            };
+
+            return View("AddAddress", newAddress);
         }
 
         public ActionResult EditAddress(int addressId)
@@ -155,9 +160,30 @@ namespace ReactShop.Web.Controllers
 
         public ActionResult SaveAddress(CustomerAddressDTO address)
         {
+            if (!ValidateAddress(address))
+            {
+                if (address.Id > 0)
+                {
+                    return View("EditAddress", address);
+                }
+                else
+                {
+                    return View("AddAddress", address);
+                }
+            }
             _saveCustomerAddress.Save(address);
             var customer = CustomerDTO.FromCustomer(_getCustomer.GetById(address.CustomerId));
             return View("ManageAccount", customer);
+        }
+
+        private bool ValidateAddress(CustomerAddressDTO addressDto)
+        {
+            if (string.IsNullOrEmpty(addressDto.Address1) ||
+                string.IsNullOrEmpty(addressDto.Postcode))
+            {
+                return false;
+            }
+            return true;
         }
 
         public ActionResult ManageOrders()
