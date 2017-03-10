@@ -13,7 +13,6 @@ namespace ReactShop.Core.Data.Customers
                 using (var transaction = db.Database.BeginTransaction())
                 {
                     var addressToSave = CustomerAddress.FromDto(address);
-                    //db.CustomerAddress.Attach(addressToSave);
                     db.CustomerAddress.AddOrUpdate(addressToSave);
 
                     db.SaveChanges();
