@@ -1,4 +1,5 @@
-﻿using ReactShop.Core.DTOs;
+﻿using System.Data.Entity.Migrations;
+using ReactShop.Core.DTOs;
 using ReactShop.Core.Entities;
 
 namespace ReactShop.Core.Data.Customers
@@ -22,6 +23,21 @@ namespace ReactShop.Core.Data.Customers
 
             }
             return result;
+        }
+
+        public void SaveAccountDetails(CustomerDTO customerDto)
+        {
+            using (var db = new Context())
+            {
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    var customer = Customer.FromDto(customerDto);
+                    db.Customer.AddOrUpdate(customer);
+
+                    db.SaveChanges();
+                    transaction.Commit();
+                }
+            }
         }
     }
 }

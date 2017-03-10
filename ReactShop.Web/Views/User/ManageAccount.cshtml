@@ -21,8 +21,9 @@
 
 
     <div class="row">
-        @using (Html.BeginForm("ManageAccount", "User"))
+        @using (Html.BeginForm("SaveAccount", "User"))
         {
+            @Html.HiddenFor(m => m.Id)
             <div>
 
                 @Html.AntiForgeryToken()
@@ -73,6 +74,10 @@
                         </td>
                     </tr>
                 </table>
+                
+                <button type="submit" class="btn btn-link" value="Save">
+                    Save
+                </button>
                     
                 <h3>Addresses</h3>
                 <table class="table table-striped">

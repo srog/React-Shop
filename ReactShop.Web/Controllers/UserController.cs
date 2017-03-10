@@ -116,6 +116,19 @@ namespace ReactShop.Web.Controllers
             return View(CustomerDTO.FromCustomer(customer));
         }
 
+        public ActionResult SaveAccount(CustomerDTO accountDetails)
+        {
+            var customer = _getCustomer.GetById(Identity.LoggedInUserId);
+            customer.Title = accountDetails.Title;
+            customer.ForeName = accountDetails.ForeName;
+            customer.Surname = accountDetails.Surname;
+            customer.Email = accountDetails.Email;
+            customer.Telephone = accountDetails.Telephone;
+            
+            _saveCustomer.SaveAccountDetails(CustomerDTO.FromCustomer(customer));
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult RemoveAddress(int addressid)
         {
             var address = CustomerAddress.FromDto(_getCustomerAddress.GetCustomerAddressById(addressid));
